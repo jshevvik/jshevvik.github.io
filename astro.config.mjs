@@ -1,4 +1,4 @@
-ikimport { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import compress from 'astro-compress'
 import icon from 'astro-icon'
