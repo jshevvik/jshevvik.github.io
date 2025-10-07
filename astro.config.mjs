@@ -11,7 +11,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   compressHTML: true,
   site: 'https://jshevvik.github.io',
-  base: '/portafolio',
   integrations: [mdx(), icon(), compress(), sitemap()],
   vite: {
     css: {
