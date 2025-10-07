@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+ikimport { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import compress from 'astro-compress'
 import icon from 'astro-icon'
@@ -10,7 +10,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://accessible-astro-starter.incluud.dev',
+  site: 'https://jshevvik.github.io',
   integrations: [mdx(), icon(), compress(), sitemap()],
   vite: {
     css: {
