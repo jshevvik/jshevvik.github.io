@@ -74,7 +74,7 @@ const sanitizedSubtitle: string = subtitle
 
           return (
             <Breadcrumbs>
-              <BreadcrumbsItem href="/" label="Home" />
+              <BreadcrumbsItem href="/" label="Inicio" />
               {segments.map((segment, index) => {
                 const url = `/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1

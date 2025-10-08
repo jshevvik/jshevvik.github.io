@@ -1,17 +1,18 @@
 ---
 import '../styles/tailwind.css'
 import '../assets/scss/index.scss'
+
 import SiteMeta from '../components/SiteMeta.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
-  title = 'Accessible Astro',
-  description = 'A starter project with accessibility features using Astro static site builder. Contains accessible landmarks, skip links, a dark mode color scheme, better focus outline and keyboard menu navigation.',
+  title = 'Portafolio de Iuliia Shevchenko',
+  description = 'Desarrolladora de aplicaciones multiplataforma. Android/Java/Php, web y accesibilidad.',
   url = Astro.site,
   image = 'social-preview-image.png',
-  author = 'Incluud',
+  author = 'Iuliia Shevchenko',
 } = Astro.props
 ---
 
@@ -35,6 +36,7 @@ const {
       <slot />
     </main>
     <Footer />
+    
     <style lang="scss" is:global>
       @use '../assets/scss/base/mixins' as *;
 
@@ -69,6 +71,8 @@ const {
           @include text-decoration(transparent, var(--foreground-color), 4px, 2px);
         }
       }
+      
     </style>
+    
   </body>
 </html>

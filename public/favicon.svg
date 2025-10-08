@@ -1,9 +1,1 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_907_31" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
-<rect width="512" height="512" rx="80" fill="#161618"/>
-</mask>
-<g mask="url(#mask0_907_31)">
-<path d="M166.892 69.3845H390.357L226.065 315.018H2.6001L166.892 69.3845Z" fill="#42E0CE"/>
-<path d="M176.677 337.783L113.043 432.923H347.108L511.4 187.29H338.645L237.988 337.783H176.677Z" fill="#A14FD6"/>
-</g>
-</svg>
+<svg id="Capa_4" data-name="Capa 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.76 357.11"><defs><style>.cls-1{fill:#c03889;}.cls-2{fill:#2e97d4;}.cls-3{font-size:256.77px;fill:#fff;font-family:DesignerBlock, Designer Block;}</style></defs><title>logo</title><polygon class="cls-1" points="51.7 357.11 305.41 357.11 475.43 125.79 215.86 125.79 51.7 357.11"/><polygon class="cls-2" points="0 251.57 191.34 0 480.76 0 281.42 251.57 0 251.57"/><text class="cls-3" transform="translate(121.79 244.91)">JS</text></svg>
