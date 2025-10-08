@@ -14,9 +14,15 @@ const {
   image = 'social-preview-image.png',
   author = 'Iuliia Shevchenko',
 } = Astro.props
+
+// Detect dark mode preference (server-side fallback to false)
+const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
+  (typeof window === 'undefined'
+    ? false
+    : window.matchMedia('(prefers-color-scheme: dark)').matches);
 ---
 
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr" class={isDark ? 'dark' : ''}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +35,24 @@ const {
 
     <!-- Enable Astro View Transitions for all browsers -->
     <ClientRouter />
+
+    <style is:global>
+    /* Claro */
+    :root {
+      --color-secondary-border: #0477b1 !important;
+      --color-secondary-bg: #2eb4f8 !important;
+      --color-secondary-text: hsl(214.3 30.4% 4.5%) !important;
+    }
+
+ 
+
+    /* Oscuro por clase .dark en <html> (si usas modo oscuro por clase) */
+    html.dark {
+      --color-secondary-border: #2eb4f8 !important;
+      --color-secondary-bg: #0477b1 !important;
+      --color-secondary-text: hsl(0 0% 100%) !important;
+    }
+  </style>
   </head>
   <body>
     <Header />

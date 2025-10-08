@@ -1,1 +1,15 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+/* Utilidad para forzar los colores del botón "secondary" */
+@layer utilities {
+  .btn-secondary-override {
+    --color-secondary-border: #0477b1 !important;
+    --color-secondary-bg: #2eb4f8 !important;
+    --color-secondary-text: hsl(214.3 30.4% 4.5%) !important;
+  }
+  .darkmode .btn-secondary-override {
+    --color-secondary-border: #2eb4f8 !important;
+    --color-secondary-bg: #0477b1 !important;
+    --color-secondary-text: hsl(0 0% 100%) !important;
+  }
+}
