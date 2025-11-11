@@ -17,9 +17,12 @@ import projectImage6 from '@assets/images/projects/project-image-6.png'
 export const getStaticPaths = (async ({ paginate }) => {
   const projects = await getCollection('projects')
 
+  // Ordenar proyectos por ID/nombre descendente (más reciente primero)
+  const sortedProjects = projects.sort((a, b) => b.id.localeCompare(a.id))
+
   const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4, projectImage5, projectImage6]
 
-  const projectsWithImages = projects.map((project, index) => {
+  const projectsWithImages = sortedProjects.map((project, index) => {
     return {
       ...project,
       featuredImage: projectImages[index % projectImages.length],
