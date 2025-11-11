@@ -4,13 +4,15 @@ author: jshevvik
 description: Aplicación completa para gestión de horarios laborales con fichaje geolocalizado, sistema de solicitudes de vacaciones y permisos, generación de informes en PDF y panel administrativo con roles de usuario
 ---
 
+import BlockQuote from '@components/BlockQuote.astro'
+import BreakoutImage from '@components/BreakoutImage.astro'
+import { Image } from 'astro:assets'
+
 ## Descripción del Proyecto
 
 Sistema integral de control horario desarrollado con PHP 8.2 y MySQL, diseñado para empresas que necesitan gestionar el tiempo de trabajo de sus empleados de forma eficiente y segura. La aplicación incluye fichaje con geolocalización en tiempo real, gestión de solicitudes de ausencias, y generación automática de informes en PDF.
 
-import BlockQuote from '@components/BlockQuote.astro'
-import BreakoutImage from '@components/BreakoutImage.astro'
-import { Image } from 'astro:assets'
+<BreakoutImage src="/projects/dashboard.png" />
 
 ## 🚀 Características Principales
 
@@ -45,6 +47,53 @@ import { Image } from 'astro:assets'
 - Resumen de horas trabajadas y descansos
 - Dashboard con estadísticas en tiempo real
 - Gráficos y visualizaciones de datos
+
+## 📸 Galería del Proyecto
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 my-8">
+  <Image
+    src="/projects/administracion.png"
+    alt="Panel de administración del sistema"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+  <Image
+    src="/projects/empleados.png"
+    alt="Gestión de empleados y roles"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+  <Image
+    src="/projects/fichaje.png"
+    alt="Sistema de fichaje con geolocalización"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+  <Image
+    src="/projects/gestion-solicitudes.png"
+    alt="Gestión de solicitudes y aprobaciones"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+  <Image
+    src="/projects/estadisticas.png"
+    alt="Dashboard de estadísticas e informes"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+  <Image
+    src="/projects/informes.png"
+    alt="Generación de informes en PDF"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover shadow-lg"
+  />
+</div>
 
 ## 🛠️ Stack Tecnológico
 
@@ -84,6 +133,14 @@ Todas las contraseñas están hasheadas con bcrypt y las credenciales sensibles 
 - Gráficos y visualizaciones interactivas
 - Experiencia de usuario optimizada
 
+<Image
+  src="/projects/ver-empleado.png"
+  alt="Vista detallada de perfil de empleado"
+  width={1200}
+  height={600}
+  class="rounded-lg shadow-lg my-6"
+/>
+
 ## 🌐 Demo y Recursos
 
 - **Demo en vivo**: [https://controlhorario-demo.onrender.com](https://controlhorario-demo.onrender.com)
@@ -101,6 +158,14 @@ Todas las contraseñas están hasheadas con bcrypt y las credenciales sensibles 
 ## 💡 Desafíos Técnicos
 
 Uno de los principales retos fue implementar un sistema de geolocalización preciso y confiable que pudiera validar que los empleados ficharan desde las ubicaciones autorizadas, considerando la precisión variable del GPS en dispositivos móviles y la necesidad de un radio de tolerancia configurable.
+
+<Image
+  src="/projects/geolocalizacion.png"
+  alt="Sistema de geolocalización con mapa interactivo"
+  width={1200}
+  height={600}
+  class="rounded-lg shadow-lg my-6"
+/>
 
 Otro desafío importante fue el diseño del sistema de permisos granulares que permitiera configurar 12 tipos diferentes de permisos por empleado, manteniendo la simplicidad en la interfaz de administración.
 
