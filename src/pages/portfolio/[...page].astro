@@ -41,16 +41,16 @@ const { page } = Astro.props
 
 <DefaultLayout
   title="Portfolio"
-  description="A showcase of projects built with Astro Content Collections, demonstrating dynamic content management."
+  description="Mis proyectos de desarrollo Android y Web, donde combino creatividad y lógica para crear soluciones reales."
 >
   <PageHeader
     title="Portfolio"
-    subtitle='A showcase of projects built with Astro Content Collections, demonstrating dynamic content management and organization. Learn more about <a href="https://docs.astro.build/en/guides/content-collections/">Astro Content Collections</a> in the official documentation.'
+    subtitle='Una colección de mis proyectos de desarrollo, incluyendo aplicaciones Android en Java y desarrollos web. Cada proyecto representa un reto técnico y creativo que he disfrutado construir.'
     bgType="bordered"
   />
   <section class="my-12">
     <div class="container">
-      <p class="text-sm"><em>Project {page.start + 1} through {page.end + 1} of {page.total} total projects</em></p>
+      <p class="text-sm"><em>Proyecto {page.start + 1} al {page.end + 1} de {page.total} proyectos totales</em></p>
       <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           page.data.map((project) => (
@@ -60,7 +60,7 @@ const { page } = Astro.props
                 url={'/portfolio/' + project.id}
                 title={project.data.title}
                 headingLevel="h2"
-                footer={'Author: ' + project.data.author}
+                footer={'Autor: ' + project.data.author}
                 fullHeight={true}
               >
                 {project.data.description}
