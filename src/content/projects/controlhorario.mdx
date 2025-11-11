@@ -5,14 +5,12 @@ description: Aplicación completa para gestión de horarios laborales con fichaj
 ---
 
 import BlockQuote from '@components/BlockQuote.astro'
-import BreakoutImage from '@components/BreakoutImage.astro'
-import { Image } from 'astro:assets'
 
 ## Descripción del Proyecto
 
 Sistema integral de control horario desarrollado con PHP 8.2 y MySQL, diseñado para empresas que necesitan gestionar el tiempo de trabajo de sus empleados de forma eficiente y segura. La aplicación incluye fichaje con geolocalización en tiempo real, gestión de solicitudes de ausencias, y generación automática de informes en PDF.
 
-<BreakoutImage src="/projects/dashboard.png" />
+<img src="/projects/dashboard.png" alt="Dashboard principal del sistema de control horario" class="w-full rounded-lg shadow-lg my-8" />
 
 ## 🚀 Características Principales
 
@@ -51,46 +49,34 @@ Sistema integral de control horario desarrollado con PHP 8.2 y MySQL, diseñado 
 ## 📸 Galería del Proyecto
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 my-8">
-  <Image
+  <img
     src="/projects/administracion.png"
     alt="Panel de administración del sistema"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
+  <img
     src="/projects/empleados.png"
     alt="Gestión de empleados y roles"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
+  <img
     src="/projects/fichaje.png"
     alt="Sistema de fichaje con geolocalización"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
+  <img
     src="/projects/gestion-solicitudes.png"
     alt="Gestión de solicitudes y aprobaciones"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
+  <img
     src="/projects/estadisticas.png"
     alt="Dashboard de estadísticas e informes"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
+  <img
     src="/projects/informes.png"
     alt="Generación de informes en PDF"
-    width={1200}
-    height={600}
     class="h-[250px] w-full rounded-lg object-cover shadow-lg"
   />
 </div>
@@ -133,11 +119,9 @@ Todas las contraseñas están hasheadas con bcrypt y las credenciales sensibles 
 - Gráficos y visualizaciones interactivas
 - Experiencia de usuario optimizada
 
-<Image
+<img
   src="/projects/ver-empleado.png"
   alt="Vista detallada de perfil de empleado"
-  width={1200}
-  height={600}
   class="rounded-lg shadow-lg my-6"
 />
 
@@ -159,11 +143,9 @@ Todas las contraseñas están hasheadas con bcrypt y las credenciales sensibles 
 
 Uno de los principales retos fue implementar un sistema de geolocalización preciso y confiable que pudiera validar que los empleados ficharan desde las ubicaciones autorizadas, considerando la precisión variable del GPS en dispositivos móviles y la necesidad de un radio de tolerancia configurable.
 
-<Image
+<img
   src="/projects/geolocalizacion.png"
   alt="Sistema de geolocalización con mapa interactivo"
-  width={1200}
-  height={600}
   class="rounded-lg shadow-lg my-6"
 />
 
