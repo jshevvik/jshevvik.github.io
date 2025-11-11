@@ -11,33 +11,37 @@ import projectImage3 from '@assets/images/projects/project-image-3.png'
 /**
  * FeaturedProjects Component
  *
- * @description A component that displays featured projects from Astro Content Collections
+ * @description Componente que muestra proyectos destacados
  */
 interface Props {
   /**
-   * Additional classes to apply to the section
+   * Clases adicionales para aplicar a la sección
    */
   class?: string
   /**
-   * The number of projects to display
+   * El número de proyectos a mostrar
    * @default 3
    */
   limit?: number
   /**
-   * The title for the section
-   * @default "Featured projects"
+   * El título de la sección
+   * @default "Proyectos destacados"
    */
   title?: string
 }
 
-const { class: className, limit = 3, title = 'Featured projects' } = Astro.props
+const { class: className, limit = 3, title = 'Proyectos destacados' } = Astro.props
 
-// Get projects from content collection
+// Obtener proyectos de la colección de contenido
 const projects = await getCollection('projects')
+
+// Ordenar proyectos por ID/nombre descendente (más reciente primero)
+const sortedProjects = projects.sort((a, b) => b.id.localeCompare(a.id))
+
 const projectImages = [projectImage1, projectImage2, projectImage3]
 
-// Limit projects and add featured images
-const featuredProjects = projects.slice(0, limit).map((project, index) => ({
+// Limitar proyectos y agregar imágenes destacadas
+const featuredProjects = sortedProjects.slice(0, limit).map((project, index) => ({
   ...project,
   featuredImage: projectImages[index % projectImages.length],
 }))
@@ -54,7 +58,7 @@ const featuredProjects = projects.slice(0, limit).map((project, index) => ({
             url={'/portfolio/' + project.id}
             headingLevel="h2"
             title={project.data.title}
-            footer={'Author: ' + project.data.author}
+            footer={'Autor: ' + project.data.author}
           >
             {project.data.description}
           </Card>
@@ -63,7 +67,7 @@ const featuredProjects = projects.slice(0, limit).map((project, index) => ({
     </div>
     <div class="mt-12">
       <Link href="/portfolio/" isButton animateOnHover animationType="nudge">
-        View all projects
+        Ver todos los proyectos
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </div>
