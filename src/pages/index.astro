@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
 import FeaturedProjects from '@components/FeaturedProjects.astro'
 import FeaturedPosts from '@components/FeaturedPosts.astro'
+// eslint-disable-next-line no-unused-vars
 import { Accordion, AccordionItem, Heading } from 'accessible-astro-components'
 import ContentMedia from '@components/ContentMedia.astro'
 
@@ -11,11 +12,11 @@ import ContentMedia from '@components/ContentMedia.astro'
 
 <DefaultLayout title="Inicio · Julia | Android & Web">
   <!-- HERO (sin correo: no paso secondaryHref / secondaryText) -->
-  <Hero
+  <Hero 
     src="/here-img.webp"
     alt="Retrato de Julia, desarrolladora Android y Web"
     title="Hola, soy Julia"
-    subtitle="Desarrolladora Android (Java) & Web. Accesibilidad, rendimiento y buenas prácticas."
+    subtitle="Combino mi lado creativo con la lógica de la programación. Soy desarrolladora Android (Java) y Web, y disfruto dando forma a ideas que se convierten en proyectos reales."
     primaryHref="/portfolio"
     primaryText="Ver proyectos"
   />
@@ -61,11 +62,11 @@ import ContentMedia from '@components/ContentMedia.astro'
   <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
   <Heading level="h2">Sobre mí</Heading>
   <p class="text-2xl">
-    Desarrolladora Android (Java) y Web. Tras finalizar mis prácticas en julio, obtuve el título de
-    Desarrollo de Aplicaciones Multiplataforma. Me enfoco en apps Android con arquitectura limpia y en sitios web
-    rápidos y accesibles con Astro. Actualmente trabajo en proyectos como un bot de Telegram para scraping de portales
-    inmobiliarios y una calculadora de interés compuesto. Me interesan la accesibilidad, el rendimiento y las buenas
-    prácticas de código.
+    Desde que descubrí la programación, me fascina la idea de construir algo que funcione, ayude y tenga sentido.
+  Soy desarrolladora Android (Java) y Web, con el título de Desarrollo de Aplicaciones Multiplataforma.
+  Me gusta unir la lógica con el diseño, la estructura con la experiencia de usuario.
+  He trabajado en proyectos personales como una calculadora de interés compuesto y sigo explorando nuevas ideas para mejorar mis habilidades.
+  Para mí, programar es una forma de aprender y de expresar curiosidad.
   </p>
 </ContentMedia>
 

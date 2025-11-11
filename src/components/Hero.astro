@@ -6,8 +6,8 @@ import { Image } from 'astro:assets'
 interface Props {
   src?: string
   alt?: string
-  title?: string         // título si no usas <slot>
-  subtitle?: string      // opcional
+  title?: string      
+  subtitle?: string     
   primaryHref?: string
   primaryText?: string
   secondaryHref?: string
@@ -18,7 +18,7 @@ const {
   src = '/here-img.webp',
   alt = 'Retrato de Julia, desarrolladora Android y web',
   title = 'Hola, soy Julia',
-  subtitle = 'Desarrollo Android (Java) y Web. Busco mi primera oportunidad como desarrolladora junior.',
+  subtitle = 'Combino mi lado creativo con la lógica de la programación. Soy desarrolladora Android (Java) y Web, y disfruto dando forma a ideas que se convierten en proyectos reales.',
   primaryHref = '/portfolio',
   primaryText = 'Ver proyectos',
   secondaryHref = 'mailto:jshevvik@.com',
