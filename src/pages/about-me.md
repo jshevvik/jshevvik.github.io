@@ -1,23 +1,28 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
 title: "Sobre mí"
+---
+
+## Del arte a los algoritmos: mi camino hacia el código
+
+La fascinación por los patrones siempre estuvo ahí. De niña, me perdía tanto en las ecuaciones matemáticas como en los trazos del arte. La geografía me abría ventanas a mundos desconocidos, y pronto los idiomas se convirtieron en mi primer lenguaje de códigos: estudié Filología Románica, especializándome en español, y coleccioné idiomas como quien colecciona herramientas—alemán, inglés, italiano.
+
+Pero algo faltaba. Los idiomas me enseñaron a comunicar, mas no a *construir*.
+
+El diseño gráfico fue mi siguiente parada: un puente entre la estética y la estrategia, donde aprendí que la forma puede transformar el mensaje. Tomé cursos de dibujo, experimenté con lo visual, me adentré en el marketing. Sin embargo, cuanto más creaba, más clara se volvía una verdad: lo que realmente me apasionaba era la *lógica* detrás de las cosas, el desafío de resolver problemas, la satisfacción de dar vida a algo funcional y nuevo.
+
+Así llegué a la programación. Y esta vez, supe que había encontrado mi lugar.
+
+### Formación y experiencia
+
+Me gradué como **Técnica Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**. Como proyecto final, junto a dos compañeros, desarrollamos **Cari, ¿Qué quieres comer hoy?**, una aplicación móvil en Android Studio con Java, Firebase para autenticación y base de datos en tiempo real. Fue mi primera vez transformando una idea en una solución tangible que resuelve un problema cotidiano.
+
+Durante mis prácticas profesionales trabajé como **desarrolladora full-stack**, donde diseñé y construí desde cero una aplicación web para el registro de tiempo laboral. Me encargué de cada capa: desde la interfaz que ven los usuarios hasta la lógica que hace funcionar todo detrás de escena.
+
+### Hoy
+
+Cada proyecto es una oportunidad para aprender algo nuevo. Cada bug, un acertijo por resolver. Sigo en este camino con la misma curiosidad que me trajo hasta aquí, convencida de que cuando hay pasión genuina por entender cómo funcionan las cosas, no existen límites para seguir creciendo.
 
 ---
 
-
-## Sobre mí
-
-Desde pequeña siempre me han fascinado el arte y las matemáticas, y también sentía una gran curiosidad por la geografía. Más adelante descubrí mi interés por los idiomas extranjeros, lo que me llevó a estudiar Filología Románica en la universidad, especializándome en lengua española.
-
-En la escuela comencé con el alemán, y más tarde empecé a estudiar inglés por mi cuenta. En la universidad amplié mis conocimientos con español, inglés e italiano. Me encantaban los idiomas, pero con el tiempo comprendí que no veía mi futuro profesional en ese ámbito.
-
-Más tarde decidí estudiar diseño gráfico, algo que me ayudó a conectar con el mundo del marketing y la comunicación visual. También asistí a un curso de dibujo, porque siempre me ha gustado crear y experimentar con lo visual.
-
-Con el tiempo descubrí que lo que realmente me motiva es la lógica, la búsqueda de soluciones y la creación de algo útil y nuevo. Así fue como llegué a la programación. Aunque el aprendizaje no siempre ha sido fácil, disfruto del proceso: entender, resolver, construir.
-
-Obtuve el título de **Técnica Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**. Como proyecto final, en un equipo de tres personas desarrollamos la aplicación móvil **Cari, ¿Qué quieres comer hoy?**, creada en Android Studio con Java, utilizando Firebase para autenticación y base de datos en tiempo real. 
-
-Durante mis prácticas en empresa trabajé como desarrolladora full-stack, donde diseñé y desarrollé una aplicación web para el registro del tiempo de trabajo de los empleados, haciéndome cargo tanto del frontend como del backend.
-
-Hoy en día sigo desarrollándome en este camino, con ganas de aprender cada día más. Creo que cuando existe curiosidad y pasión, no hay límites para seguir creciendo.
-
+*¿Buscas a alguien que combine pensamiento lógico, sensibilidad creativa y determinación para aprender? Hablemos.*
