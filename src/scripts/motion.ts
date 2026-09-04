@@ -114,11 +114,13 @@ const initialiseMotion = () => {
 
     layers.forEach((layer) => {
       const depth = Number(layer.dataset.depth ?? 0)
+      const depthX = Number(layer.dataset.depthX ?? depth)
+      const depthY = Number(layer.dataset.depthY ?? depth * 0.72)
       const baseScale = Number(layer.dataset.baseScale ?? 1.04)
       const scrollY = Number(layer.dataset.scrollY ?? 0)
       const scrollScale = Number(layer.dataset.scrollScale ?? 0)
-      layer.style.setProperty('--layer-x', `${pointerCurrentX * depth * intensity}px`)
-      layer.style.setProperty('--layer-y', `${pointerCurrentY * depth * 0.72 * intensity}px`)
+      layer.style.setProperty('--layer-x', `${pointerCurrentX * depthX * intensity}px`)
+      layer.style.setProperty('--layer-y', `${pointerCurrentY * depthY * intensity}px`)
       layer.style.setProperty('--layer-scroll-y', `${scrollCurrent * scrollY * intensity}px`)
       layer.style.setProperty('--layer-scale', `${baseScale + scrollCurrent * scrollScale * intensity}`)
     })
