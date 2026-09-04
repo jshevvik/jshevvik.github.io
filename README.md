@@ -1,6 +1,6 @@
-# Julia Shevchenko — Frontend Portfolio
+# Julia Shevchenko — Software Development Portfolio
 
-Personal portfolio for **Julia Shevchenko**, a Junior Frontend Developer with a full-stack background. The site presents selected projects, technical writing, and a career journey through an accessible Spanish-language interface.
+Personal portfolio for **Julia Shevchenko**, a Junior Software Developer with experience in web development and Java projects. The site presents selected projects, technical writing, and a career journey through an accessible Spanish-language interface.
 
 [Live demo](https://jshevvik.github.io)
 
