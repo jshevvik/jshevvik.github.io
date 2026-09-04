@@ -1,11 +1,11 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   interpolate-size: allow-keywords;
 
   // brand colors (change these to your own brand colors)
-  --brand-primary: #ff00aa;
-  --brand-secondary: #00aaff;
-  --brand-neutral: #b9bec4;
+  --brand-primary: #ff806f;
+  --brand-secondary: #70e6d7;
+  --brand-neutral: #9eb2c0;
 
 
 
@@ -33,15 +33,15 @@
   --color-neutral-900: oklch(from var(--brand-neutral) 15% c h);
 
   // color scheme
-  --foreground-color: light-dark(var(--color-neutral-800), var(--color-neutral-100));
-  --background-color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
-  --icon-color: light-dark(var(--color-neutral-800), var(--color-neutral-100));
-  --link-color: light-dark(var(--color-primary-400), var(--color-secondary-100));
-  --link-hover-color: light-dark(var(--color-primary-300), var(--color-secondary-200));
-  --border-color: light-dark(var(--color-neutral-900), var(--color-neutral-100));
-  --border-color-subtle: light-dark(var(--color-neutral-300), var(--color-neutral-800));
-  --text-decoration-color: light-dark(var(--color-neutral-700), var(--color-neutral-100));
-  --text-decoration-color-hover: light-dark(var(--color-neutral-100), var(--color-neutral-200));
+  --foreground-color: #eaf4f8;
+  --background-color: #061525;
+  --icon-color: #d9eef1;
+  --link-color: #75e9da;
+  --link-hover-color: #a1f5eb;
+  --border-color: #6de6d7;
+  --border-color-subtle: rgb(157 196 211 / .22);
+  --text-decoration-color: #75e9da;
+  --text-decoration-color-hover: #ff9a8d;
 
   // theme settings
   --radius-small: 3px;

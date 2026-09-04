@@ -9,20 +9,15 @@ import { ClientRouter } from 'astro:transitions'
 
 const {
   title = 'Portafolio de Iuliia Shevchenko',
-  description = 'Desarrolladora de aplicaciones multiplataforma. Android/Java/Php, web y accesibilidad.',
+  description = 'Frontend Developer with a Full-stack background. Interfaces accesibles, sólidas y cuidadas de principio a fin.',
   url = Astro.site,
   image = 'social-preview-image.png',
   author = 'Iuliia Shevchenko',
 } = Astro.props
 
-// Detect dark mode preference (server-side fallback to false)
-const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
-  (typeof window === 'undefined'
-    ? false
-    : window.matchMedia('(prefers-color-scheme: dark)').matches);
 ---
 
-<html lang="es" dir="ltr" class={isDark ? 'dark' : ''}>
+<html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,28 +26,17 @@ const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
     <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
+    <SiteMeta title={title} description={description} url={url} image={image} author={author} />
 
     <!-- Enable Astro View Transitions for all browsers -->
     <ClientRouter />
 
-    <style is:global>
-    /* Claro */
-    :root {
-      --color-secondary-border: #0477b1 !important;
-      --color-secondary-bg: #2eb4f8 !important;
-      --color-secondary-text: hsl(214.3 30.4% 4.5%) !important;
-    }
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('has-motion')
+      }
+    </script>
 
- 
-
-    /* Oscuro por clase .dark en <html> (si usas modo oscuro por clase) */
-    html.dark {
-      --color-secondary-border: #2eb4f8 !important;
-      --color-secondary-bg: #0477b1 !important;
-      --color-secondary-text: hsl(0 0% 100%) !important;
-    }
-  </style>
   </head>
   <body>
     <Header />
@@ -60,6 +44,9 @@ const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
       <slot />
     </main>
     <Footer />
+    <script>
+      import '../scripts/motion'
+    </script>
     
     <style lang="scss" is:global>
       @use '../assets/scss/base/mixins' as *;
@@ -68,6 +55,10 @@ const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
       html,
       body {
         height: 100%;
+      }
+
+      html.menu-open {
+        overflow: hidden;
       }
 
       body {
@@ -91,8 +82,52 @@ const isDark = Astro.cookies?.get('theme')?.value === 'dark' ||
       }
 
       .card {
+        overflow: hidden;
+        border: 1px solid rgb(130 181 198 / .18);
+        border-radius: 1rem;
+        background: #0a2034;
+        color: #b5c7d0;
+
         a {
           @include text-decoration(transparent, var(--foreground-color), 4px, 2px);
+        }
+
+        h2,
+        h3 {
+          color: #eff8fa;
+        }
+      }
+
+      .has-motion [data-reveal] {
+        opacity: 0;
+        transform: translate3d(0, 2rem, 0);
+        transition: opacity 700ms cubic-bezier(.2, .7, .2, 1), transform 850ms cubic-bezier(.2, .7, .2, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      .has-motion [data-reveal='left'] {
+        transform: translate3d(-2rem, 0, 0);
+      }
+
+      .has-motion [data-reveal='scale'] {
+        transform: translate3d(0, 1.25rem, 0) scale(.975);
+      }
+
+      .has-motion [data-reveal].is-visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+          animation: none !important;
         }
       }
       

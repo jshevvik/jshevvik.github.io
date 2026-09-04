@@ -1,49 +1,55 @@
 ---
-import Navigation from '../components/Navigation.astro'
-import { DarkMode, Link, SkipLink } from 'accessible-astro-components'
+import Navigation from './Navigation.astro'
+import { SkipLink } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
-
-/**
- * Header Component
- *
- * @description A component that displays the header of the website
- */
 ---
 
-<header>
+<header class="site-header">
   <SkipLink />
   <Navigation>
-    <li class="menu-item">
-      <Link href="/">Inicio</Link>
-    </li>
-    <li class="menu-item">
-      <Link href="/portfolio/">Portfolio</Link>
-    </li>
-    <li class="menu-item">
-      <Link href="/blog/">Blog</Link>
-    </li>
-    <li class="menu-item">
-      <Link href="/about-me">Sobre mí</Link>
-    </li>
-    <li class="menu-item type-icon animate-rotate">
-      <DarkMode>
-        <Icon aria-hidden="true" name="lucide:moon" slot="light" />
-        <Icon aria-hidden="true" name="lucide:sun" slot="dark" />
-      </DarkMode>
+    <li class="menu-item"><a href="/" data-nav-section="inicio">Inicio</a></li>
+    <li class="menu-item"><a href="/portfolio/" data-nav-section="proyecto">Proyectos</a></li>
+    <li class="menu-item"><a href="/about-me" data-nav-section="trayectoria">Sobre mí</a></li>
+    <li class="menu-item"><a href="/blog/" data-nav-section="notas">Notas</a></li>
+    <li class="menu-item menu-item--contact">
+      <a href="/contact/" data-nav-section="contacto">
+        <span>Hablemos</span>
+        <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1rem" />
+      </a>
     </li>
   </Navigation>
 </header>
 
-<style lang="scss" is:global>
-  header {
-    .type-icon {
-      display: block;
-      margin-inline: -7px;
+<style>
+  .site-header {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    animation: header-enter 650ms cubic-bezier(.2, .75, .2, 1) both;
+    transition: top 350ms cubic-bezier(.2, .75, .2, 1), left 350ms cubic-bezier(.2, .75, .2, 1), width 350ms cubic-bezier(.2, .75, .2, 1), background-color 350ms ease, border-color 350ms ease, box-shadow 350ms ease, border-radius 350ms ease;
+  }
 
-      svg {
-        inline-size: 30px;
-        block-size: 30px;
-      }
-    }
+  .site-header.is-scrolled {
+    top: .65rem;
+    left: .75rem;
+    width: calc(100% - 1.5rem);
+    border-color: rgb(137 187 203 / .17);
+    border-radius: 1rem;
+    background: rgb(4 17 30 / .78);
+    box-shadow: 0 1rem 3rem rgb(0 5 12 / .24);
+    backdrop-filter: blur(18px) saturate(130%);
+  }
+
+  @keyframes header-enter {
+    from { opacity: 0; transform: translateY(-1.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header { animation: none; transition: none; }
   }
 </style>

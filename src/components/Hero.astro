@@ -1,13 +1,10 @@
 ---
-import { Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 
 interface Props {
-  src?: string
   alt?: string
-  title?: string      
-  subtitle?: string     
+  title?: string
+  subtitle?: string
   primaryHref?: string
   primaryText?: string
   secondaryHref?: string
@@ -15,68 +12,130 @@ interface Props {
 }
 
 const {
-  src = '/here-img.webp',
-  alt = 'Retrato de Julia, desarrolladora Android y web',
-  title = 'Hola, soy Julia',
-  subtitle = 'Combino mi lado creativo con la lógica de la programación. Soy desarrolladora Android (Java) y Web, y disfruto dando forma a ideas que se convierten en proyectos reales.',
-  primaryHref = '/portfolio',
-  primaryText = 'Ver proyectos',
-  secondaryHref = 'mailto:jshevvik@.com',
-  secondaryText = 'Escríbeme',
+  alt = 'Paisaje nocturno que conecta naturaleza, ciudad, código y un camino iluminado',
+  title = 'Frontend Developer with a Full-stack background',
+  subtitle = 'Diseño y desarrollo experiencias web accesibles, sólidas y cuidadas de principio a fin.',
+  primaryHref = '/portfolio/',
+  primaryText = 'Explorar proyectos',
+  secondaryHref = '/about-me',
+  secondaryText = 'Conocer mi recorrido',
 }: Props = Astro.props
 ---
 
-<section class="hero my-24">
-  <div class="container">
-    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
-      <div class="flex flex-col items-center gap-6 md:items-start">
-        <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-         
-          <slot><span class="text-gradient">{title}</span></slot>
-        </h1>
+<section id="inicio" class="hero" aria-labelledby="hero-title" data-section="inicio">
+  <div class="hero__sticky" data-hero-scene>
+    <p class="sr-only" role="img" aria-label={alt}>{alt}</p>
+    <div class="hero__layer hero__layer--background" data-depth="4" data-base-scale="1.07" data-scroll-y="-5" data-scroll-scale="0">
+      <img src="/hero-layers/hero-v2-layer-01-background.png" alt="" width="1672" height="941" loading="eager" decoding="async" fetchpriority="high" />
+    </div>
+    <div class="hero__layer hero__layer--hills" data-depth="14" data-base-scale="1.07" data-scroll-y="-28" data-scroll-scale="0.014">
+      <img src="/hero-layers/hero-v2-layer-02-hills.png" alt="" width="1672" height="941" loading="eager" decoding="async" />
+    </div>
+    <div class="hero__layer hero__layer--workstation" data-depth="36" data-base-scale="1.07" data-scroll-y="-72" data-scroll-scale="0.075">
+      <img src="/hero-layers/hero-v2-layer-03-workstation.png" alt="" width="1672" height="941" loading="eager" decoding="async" />
+    </div>
+    <div class="hero__atmosphere" aria-hidden="true"></div>
 
-        {subtitle && (
-          <p class="text-lg opacity-90 text-center md:text-left max-w-prose">{subtitle}</p>
-        )}
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-hero-step style="--hero-delay: 220ms"><span></span> Hola, soy Julia</p>
+        <h1 id="hero-title" data-hero-step style="--hero-delay: 320ms"><slot>{title}</slot></h1>
+        <p class="hero__subtitle" data-hero-step style="--hero-delay: 450ms">{subtitle}</p>
 
-        <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <Link href={primaryHref} isButton type="primary" animateOnHover animationType="boop">
-            <Icon aria-hidden="true" name="lucide:sparkles" size="1.5rem" />
+        <div class="hero__actions" data-hero-step style="--hero-delay: 580ms">
+          <a class="hero__button hero__button--primary" href={primaryHref}>
             {primaryText}
-          </Link>
+            <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1.2rem" />
+          </a>
           {secondaryHref && secondaryText && (
-            <Link href={secondaryHref} isButton type="secondary" class="btn-secondary-override" animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:mail" size="1.5rem" />
+            <a class="hero__button hero__button--quiet" href={secondaryHref}>
               {secondaryText}
-            </Link>
+              <Icon aria-hidden="true" name="lucide:arrow-right" size="1.1rem" />
+            </a>
           )}
         </div>
-      </div>
 
-      <Image
-        class="hidden lg:block"
-        src={src}
-        alt={alt}
-        decoding="async"
-        width={800}
-        height={600}
-        loading="eager"
-      />
+        <ul class="hero__signals" aria-label="Especialidades" data-hero-step style="--hero-delay: 710ms">
+          <li>Interfaces accesibles</li>
+          <li>Astro &amp; JavaScript</li>
+          <li>Visión full-stack</li>
+        </ul>
+      </div>
     </div>
+
+    <div class="hero__layer hero__layer--foreground" data-depth="60" data-base-scale="1.07" data-scroll-y="-125" data-scroll-scale="0.032">
+      <img src="/hero-layers/hero-v2-layer-04-foreground.png" alt="" width="1672" height="941" loading="eager" decoding="async" />
+    </div>
+
+    <a class="hero__scroll" href="#trayectoria">
+      <span>Descubre el recorrido</span>
+      <Icon aria-hidden="true" name="scroll-cue" size="1rem" />
+    </a>
   </div>
 </section>
 
 <style lang="scss">
-  h1 { text-wrap: unset; }
-  .text-gradient {
-    background: linear-gradient(
-      315deg,
-      light-dark(var(--color-primary-300), var(--color-secondary-100)) 25%,
-      light-dark(var(--color-secondary-300), var(--color-primary-200))
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .hero { position: relative; isolation: isolate; height: 145svh; background: #04111e; }
+  .hero__sticky { position: sticky; top: 0; isolation: isolate; display: grid; align-items: center; overflow: hidden; height: 100svh; min-height: 42rem; padding-block: clamp(7rem, 11vw, 9rem) clamp(5rem, 9vw, 8rem); }
+  .hero__sticky::before { position: absolute; z-index: 4; inset: 0; opacity: .07; background-image: linear-gradient(rgb(109 231 216 / .18) 1px, transparent 1px), linear-gradient(90deg, rgb(109 231 216 / .18) 1px, transparent 1px); background-size: 5rem 5rem; mask-image: linear-gradient(to bottom, black, transparent 72%); content: ''; animation: grid-drift 32s linear infinite; pointer-events: none; }
+
+  .hero__layer { position: absolute; inset: -4%; opacity: 1; transform: translate3d(var(--layer-x, 0px), calc(var(--layer-y, 0px) + var(--layer-scroll-y, 0px)), 0) scale(var(--layer-scale, 1.04)); transform-origin: center; will-change: transform; pointer-events: none; }
+  .hero__layer img { width: 100%; height: 100%; object-fit: cover; object-position: center; user-select: none; }
+  .hero__layer--background { z-index: 0; }
+  .hero__layer--hills { z-index: 1; }
+  .hero__layer--workstation { z-index: 3; }
+  .hero__layer--foreground { z-index: 5; }
+
+  .hero__atmosphere { position: absolute; z-index: 4; top: 5%; left: 42%; width: min(64rem, 80vw); aspect-ratio: 1; border: 1px solid rgb(102 231 216 / .08); border-radius: 50%; box-shadow: 0 0 9rem rgb(24 201 187 / .04) inset; animation: atmosphere-drift 20s ease-in-out infinite alternate; pointer-events: none; }
+
+  .hero__grid { position: relative; z-index: 7; display: grid; align-items: center; }
+  .hero__content { position: relative; isolation: isolate; max-width: min(50rem, 61vw); }
+  .hero__content::before { position: absolute; z-index: -1; inset: -2.5rem -4rem -3rem -3rem; border-radius: 50%; background: radial-gradient(ellipse at 38% 47%, rgb(3 14 25 / .77) 0%, rgb(3 14 25 / .52) 42%, rgb(3 14 25 / .2) 67%, transparent 78%); filter: blur(8px); content: ''; pointer-events: none; }
+  .hero__eyebrow { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; color: #8df1e5; font-weight: 600; font-size: .95rem; letter-spacing: .12em; text-shadow: 0 2px 1rem rgb(0 4 10 / .7); text-transform: uppercase; }
+  .hero__eyebrow span { width: 2.5rem; height: 1px; background: currentColor; box-shadow: 0 0 .75rem currentColor; }
+  h1 { max-width: 12ch; color: #f5fbff; font-weight: 600; font-size: clamp(3.35rem, 6.5vw, 6.8rem); line-height: .94; letter-spacing: -.055em; text-shadow: 0 .2rem 1.6rem rgb(0 5 13 / .6); text-wrap: balance; }
+  h1 :global(em), h1 :global(strong) { color: #74e7d8; font-style: normal; }
+  .hero__subtitle { margin-top: clamp(1.5rem, 3vw, 2.25rem); max-width: 37rem; color: #d0dde4; font-size: clamp(1.1rem, 1.35vw, 1.28rem); line-height: 1.55; text-shadow: 0 2px 1rem rgb(0 4 10 / .8); }
+
+  .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.25rem; margin-top: 2.25rem; }
+  .hero__button { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; gap: .6rem; min-height: 3.25rem; border-radius: 999px; padding: .78rem 1.35rem; font-weight: 600; line-height: 1.2; text-decoration: none; transition: transform 260ms cubic-bezier(.2,.8,.2,1), border-color 220ms ease, background-color 220ms ease, box-shadow 260ms ease; }
+  .hero__button::before { position: absolute; z-index: -1; inset: 0; transform: translateX(-105%) skewX(-18deg); background: rgb(255 255 255 / .22); content: ''; transition: transform 420ms cubic-bezier(.2,.8,.2,1); }
+  .hero__button svg { transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+  .hero__button:hover, .hero__button:focus-visible { transform: translateY(-3px); }
+  .hero__button:hover::before, .hero__button:focus-visible::before { transform: translateX(105%) skewX(-18deg); }
+  .hero__button:hover svg, .hero__button:focus-visible svg { transform: translate(.15rem, -.15rem); }
+  .hero__button--primary { border: 1px solid #75ebdd; background: #75ebdd; color: #04211f; box-shadow: 0 .9rem 2.5rem rgb(2 13 21 / .35); }
+  .hero__button--primary:hover, .hero__button--primary:focus-visible { background: #9af5eb; color: #04211f; box-shadow: 0 1.15rem 3rem rgb(60 222 204 / .24); }
+  .hero__button--quiet { border: 1px solid rgb(216 235 242 / .36); background: rgb(3 15 27 / .34); color: #edf8fa; backdrop-filter: blur(10px); }
+  .hero__button--quiet:hover, .hero__button--quiet:focus-visible { border-color: #ff8f7f; color: #ffb1a6; }
+  .hero__signals { display: flex; flex-wrap: wrap; gap: .65rem 1.4rem; margin-top: clamp(2.5rem, 5vw, 4rem); color: #b6c8d1; font-size: .9rem; text-shadow: 0 2px .8rem rgb(0 4 10 / .8); }
+  .hero__signals li { display: flex; align-items: center; gap: .5rem; }
+  .hero__signals li::before { width: .35rem; height: .35rem; border-radius: 50%; background: #ff806f; box-shadow: 0 0 .6rem rgb(255 128 111 / .45); content: ''; }
+
+  .hero__scroll { position: absolute; z-index: 8; bottom: 1.5rem; left: 50%; display: none; align-items: center; gap: .55rem; transform: translateX(-50%); color: #a2b8c3; font-size: .82rem; letter-spacing: .08em; text-decoration: none; text-shadow: 0 2px .8rem rgb(0 4 10 / .9); text-transform: uppercase; }
+  .hero__scroll svg { animation: scroll-cue 1.8s ease-in-out infinite; }
+
+  :global(.has-motion) .hero__layer { opacity: 0; filter: blur(5px); animation: layer-enter 1300ms cubic-bezier(.2,.75,.2,1) 100ms forwards; }
+  :global(.has-motion) .hero__layer--hills { animation-delay: 200ms; }
+  :global(.has-motion) .hero__layer--workstation { animation-delay: 340ms; }
+  :global(.has-motion) .hero__layer--foreground { animation-delay: 460ms; }
+  :global(.has-motion) [data-hero-step] { opacity: 0; animation: hero-enter 780ms cubic-bezier(.2,.75,.2,1) var(--hero-delay, 0ms) forwards; }
+
+  @keyframes hero-enter { from { opacity: 0; transform: translate3d(0, 1.6rem, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+  @keyframes layer-enter { from { opacity: 0; filter: blur(5px); } to { opacity: 1; filter: blur(0); } }
+  @keyframes grid-drift { to { background-position: 5rem 5rem; } }
+  @keyframes atmosphere-drift { from { transform: translateX(-5%) scale(.97); } to { transform: translateX(-2%) scale(1.04); } }
+  @keyframes scroll-cue { 0%, 100% { opacity: .45; transform: translateY(-.15rem); } 50% { opacity: 1; transform: translateY(.3rem); } }
+
+  @media (min-width: 56rem) { .hero__scroll { display: flex; } }
+  @media (max-width: 55.99rem) { .hero { height: 135svh; } .hero__sticky { min-height: 0; padding-top: 7rem; } .hero__layer { inset: -3%; } .hero__layer img { object-position: 66% center; } .hero__content { max-width: 46rem; } .hero__content::before { inset: -2rem -2rem -2.5rem -2rem; background: radial-gradient(ellipse at 42% 48%, rgb(3 14 25 / .8), rgb(3 14 25 / .48) 47%, transparent 76%); } h1 { max-width: 13ch; font-size: clamp(3.15rem, 12vw, 5rem); } }
+  @media (max-width: 34rem) { .hero__sticky { align-items: start; padding-top: 6.5rem; } .hero__layer { inset: -2%; } .hero__layer img { object-position: 69% center; } .hero__content::before { inset: -1.5rem -.8rem -2rem -1rem; } .hero__actions { align-items: stretch; flex-direction: column; } .hero__button { width: 100%; } .hero__signals { display: grid; margin-top: 2.5rem; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero { height: auto; min-height: 100svh; }
+    .hero__sticky { position: relative; min-height: 100svh; }
+    .hero__sticky::before, .hero__layer, .hero__atmosphere, .hero__scroll svg, [data-hero-step] { animation: none !important; }
+    .hero__layer, .hero__button, .hero__button::before, .hero__button svg { transform: none !important; transition: none !important; }
+    .hero__layer, [data-hero-step] { opacity: 1 !important; filter: none !important; }
   }
 </style>
-
-

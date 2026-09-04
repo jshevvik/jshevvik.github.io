@@ -1,125 +1,46 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading, Link, Radio } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
-<DefaultLayout title="Contact">
-  <PageHeader title="Contact" subtitle="Have a question? Get in touch with us!" bgType="gradient" />
-  <section class="my-16">
-    <div class="container">
-      <Heading level="h2">Let's talk</Heading>
-    </div>
-  </section>
-  <section class="container">
-    <div class="grid grid-cols-1 gap-32 md:grid-cols-2">
-      <div class="space-content">
-        <Form name="contact" action="/thank-you" method="post">
-          <!-- Input field with custom validation message -->
-          <Input
-            name="firstname"
-            label="First name"
-            required
-            data-validation="We need your first name to address you correctly"
-            autocomplete="given-name"
-          />
+<DefaultLayout title="Contacto · Julia Shevchenko" description="Contacto profesional con Julia Shevchenko, frontend developer con experiencia full-stack.">
+  <PageHeader
+    title="Hablemos"
+    subtitle="Si buscas una desarrolladora frontend con sensibilidad visual, criterio de accesibilidad y una base full-stack, me encantará conocer el proyecto."
+    bgType="bordered"
+  />
 
-          <Input name="email" label="Email address" type="email" required autocomplete="email" />
-
-          <!-- Custom validation with pattern -->
-          <Input name="phone" label="Phone number" type="tel" required data-validation-pattern="^[0-9]{10}$" />
-
-          <Textarea name="message" label="Message" required />
-
-          <!-- Checkbox group with validation -->
-          <Fieldset
-            name="interests"
-            legend="What are you interested in?"
-            required
-            data-validation="Please select at least one area of interest"
-          >
-            <Checkbox name="accessibility" value="a11y" label="Accessibility and inclusive design" />
-            <Checkbox name="wcag-compliance" value="wcag" label="WCAG compliance and testing" />
-            <Checkbox name="screen-reader" value="sr" label="Screen reader optimization" />
-            <Checkbox name="keyboard-nav" value="keyboard" label="Keyboard navigation" />
-          </Fieldset>
-
-          <!-- Radio group (shared names) -->
-          <Fieldset name="experience" legend="Your experience level" required>
-            <Radio name="experience" value="beginner" label="Beginner" />
-            <Radio name="experience" value="intermediate" label="Intermediate" />
-            <Radio name="experience" value="advanced" label="Advanced" />
-          </Fieldset>
-
-          <Button htmlType="submit" type="primary">Send Message</Button>
-        </Form>
+  <section class="contact-page" aria-labelledby="contact-options">
+    <div class="container contact-page__grid">
+      <div>
+        <p class="kicker">Contacto profesional</p>
+        <h2 id="contact-options">Una buena colaboración empieza con una conversación clara.</h2>
       </div>
-      <div class="space-content">
-        <Heading level="h3">Contact us</Heading>
-        <p class="text-lg">
-          Experience the power of Accessible Astro Starter's Form components! This contact form showcases our
-          comprehensive form validation system with built-in accessibility features and WCAG 2.2 compliance.
-        </p>
-        <p>
-          Our Form component includes automatic validation, proper error handling, semantic HTML structure, and screen
-          reader support. Test out the various input types, validation patterns, and interactive elements to see how
-          accessibility and usability work together seamlessly.
-        </p>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:phone" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Phone:</span>
-            <Link href="tel:+12345678900">+1 (234) 567-8900</Link>
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:mail" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Email:</span>
-            <Link href="mailto:hello@accessibleastro.dev">hello@accessibleastro.dev</Link>
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:map-pin" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Address:</span>
-            123 Accessibility Lane, Web Standards City
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:clock" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Business Hours:</span>
-            Monday - Friday, 9:00 AM - 5:00 PM EST
-          </p>
-        </div>
-
-        <ul class="flex flex-wrap gap-2">
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:facebook" size={32} />
-              <span class="sr-only">Go to our Facebook page, opens in a new tab</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:twitter" size={32} />
-              <span class="sr-only">Go to our Twitter page, opens in a new tab</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:linkedin" size={32} />
-              <span class="sr-only">Go to our LinkedIn page, opens in a new tab</span>
-            </Link>
-          </li>
-        </ul>
+      <div class="contact-page__options">
+        <a href="https://github.com/jshevvik" target="_blank" rel="me noreferrer">
+          <span><Icon aria-hidden="true" name="lucide:github" size="1.35rem" /> GitHub</span>
+          <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1.2rem" />
+          <small>Explora mi código y proyectos públicos</small>
+        </a>
+        <a href="/portfolio/">
+          <span><Icon aria-hidden="true" name="lucide:folder-code" size="1.35rem" /> Portfolio</span>
+          <Icon aria-hidden="true" name="lucide:arrow-right" size="1.2rem" />
+          <small>Conoce cómo abordo un producto completo</small>
+        </a>
       </div>
     </div>
   </section>
 </DefaultLayout>
+
+<style>
+  .contact-page { padding-block: clamp(5rem, 10vw, 10rem); }
+  .contact-page__grid { display: grid; gap: 3rem; }
+  .kicker { margin-bottom: 1rem; color: #73e7d8; font-weight: 600; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; }
+  h2 { max-width: 14ch; color: #eff9fb; font-size: clamp(2.4rem, 5vw, 5rem); line-height: 1; letter-spacing: -.045em; }
+  .contact-page__options { border-top: 1px solid rgb(130 181 198 / .2); }
+  .contact-page__options a { display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; border-bottom: 1px solid rgb(130 181 198 / .2); padding-block: 1.5rem; color: #eef8fa; text-decoration: none; }
+  .contact-page__options a > span { display: flex; align-items: center; gap: .65rem; font-size: 1.25rem; font-weight: 600; }
+  .contact-page__options small { grid-column: 1 / -1; color: #829dab; font-size: .9rem; }
+  @media (min-width: 48rem) { .contact-page__grid { grid-template-columns: 1fr .8fr; align-items: start; gap: 6rem; } }
+</style>

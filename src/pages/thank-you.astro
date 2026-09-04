@@ -1,22 +1,26 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Heading, Link, Notification } from 'accessible-astro-components'
+import { Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
-<DefaultLayout title="Thank You">
-  <PageHeader title="Splendid!" subtitle="The form was successfully validated." bgType="gradient" />
-  <section class="container my-16">
-    <div class="space-content">
-      <Notification type="info">
-        <Icon aria-hidden="true" name="lucide:info" size={24} />
-        <p>This was a test of the form validation system, no email was sent 😉.</p>
-      </Notification>
-      <Link href="/contact" isButton type="primary" animateOnHover animation="boop" pulse>
-        <Icon aria-hidden="true" name="lucide:mail" size={24} />
-        Send another message
+<DefaultLayout title="Gracias" description="Confirmación de contacto del portfolio de Julia Shevchenko.">
+  <PageHeader title="Gracias" subtitle="La acción se ha completado correctamente." bgType="bordered" />
+  <section class="container thank-you">
+    <p>Puedes seguir explorando mis proyectos o volver a la página principal.</p>
+    <div>
+      <Link href="/portfolio/" isButton type="primary">Ver proyectos</Link>
+      <Link href="/" isButton type="secondary">
+        Volver al inicio
+        <Icon aria-hidden="true" name="lucide:arrow-left" size={20} />
       </Link>
     </div>
   </section>
 </DefaultLayout>
+
+<style>
+  .thank-you { padding-block: clamp(4rem, 8vw, 7rem); }
+  .thank-you > p { color: #b1c3cc; font-size: 1.1rem; }
+  .thank-you > div { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+</style>
