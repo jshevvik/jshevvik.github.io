@@ -3,26 +3,24 @@ layout: ../layouts/MarkdownLayout.astro
 title: "Sobre mí"
 ---
 
-## Del arte a los algoritmos: mi camino hacia el código
+## Aprender, construir y entender cómo encajan las piezas
 
-La fascinación por los patrones siempre estuvo ahí. De niña, me perdía tanto en las ecuaciones matemáticas como en los trazos del arte. La geografía me abría ventanas a mundos desconocidos, y pronto los idiomas se convirtieron en mi primer lenguaje de códigos: estudié Filología Románica, especializándome en español, y coleccioné idiomas como quien colecciona herramientas—alemán, inglés, italiano.
+Soy Julia, desarrolladora de software junior y titulada en Desarrollo de Aplicaciones Multiplataforma. Me gusta analizar un problema, ordenar la información y convertirla en una solución que funcione y resulte fácil de utilizar.
 
-Pero algo faltaba. Los idiomas me enseñaron a comunicar, mas no a *construir*.
+Mi camino profesional no empezó directamente en la programación. Estudié Filología, trabajé en comunicación y marketing digital y me formé en diseño gráfico. Esa experiencia me enseñó a escuchar, explicar ideas con claridad y prestar atención a los detalles. Con el tiempo descubrí que quería ir más allá de comunicar y diseñar: también quería construir la lógica que hace funcionar un producto.
 
-El diseño gráfico fue mi siguiente parada: un puente entre la estética y la estrategia, donde aprendí que la forma puede transformar el mensaje. Tomé cursos de dibujo, experimenté con lo visual, me adentré en el marketing. Sin embargo, cuanto más creaba, más clara se volvía una verdad: lo que realmente me apasionaba era la *lógica* detrás de las cosas, el desafío de resolver problemas, la satisfacción de dar vida a algo funcional y nuevo.
+### Formación y proyectos
 
-Así llegué a la programación. Y esta vez, supe que había encontrado mi lugar.
+Durante el ciclo de DAM trabajé con Java, bases de datos, desarrollo Android y otras áreas del desarrollo de aplicaciones. En el proyecto final, junto a dos compañeros, creamos **Cari, ¿Qué quieres comer hoy?**, una aplicación Android desarrollada con Java y Firebase. Implementamos autenticación, gestión de usuarios y datos sincronizados en tiempo real.
 
-### Formación y experiencia
+En mis prácticas profesionales participé en el desarrollo web con PHP, MySQL, JavaScript, Bootstrap y PrestaShop. También construí una aplicación interna de control horario con autenticación, sesiones, distintos roles de usuario, operaciones CRUD, validación y consultas preparadas mediante PDO. Esta experiencia me permitió trabajar tanto en la interfaz como en la lógica y los datos de una aplicación real.
 
-Me gradué como **Técnica Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**. Como proyecto final, junto a dos compañeros, desarrollamos **Cari, ¿Qué quieres comer hoy?**, una aplicación móvil en Android Studio con Java, Firebase para autenticación y base de datos en tiempo real. Fue mi primera vez transformando una idea en una solución tangible que resuelve un problema cotidiano.
+### En qué punto estoy
 
-Durante mis prácticas profesionales trabajé como **desarrolladora full-stack**, donde diseñé y construí desde cero una aplicación web para el registro de tiempo laboral. Me encargué de cada capa: desde la interfaz que ven los usuarios hasta la lógica que hace funcionar todo detrás de escena.
+No quiero limitarme todavía a una sola etiqueta. Tengo experiencia en desarrollo web, una base sólida en Java y mucho interés por seguir profundizando en backend, APIs, bases de datos y buenas prácticas, sin dejar de cuidar la experiencia de usuario.
 
-### Hoy
-
-Cada proyecto es una oportunidad para aprender algo nuevo. Cada bug, un acertijo por resolver. Sigo en este camino con la misma curiosidad que me trajo hasta aquí, convencida de que cuando hay pasión genuina por entender cómo funcionan las cosas, no existen límites para seguir creciendo.
+Busco una oportunidad junior en la que pueda aportar lo que ya sé, aprender de otras personas y seguir descubriendo el área en la que puedo generar más valor.
 
 ---
 
-*¿Buscas a alguien que combine pensamiento lógico, sensibilidad creativa y determinación para aprender? Hablemos.*
+*Si crees que mi perfil puede encajar en tu equipo o proyecto, estaré encantada de conoceros.*

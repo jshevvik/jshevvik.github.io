@@ -4,36 +4,36 @@ import Hero from '@components/Hero.astro'
 import { Icon } from 'astro-icon/components'
 
 const strengths = [
-  { icon: 'lucide:layout-template', number: '01', title: 'Frontend con intención', text: 'Interfaces claras, responsive y con una identidad visual que acompaña el contenido sin imponerse sobre él.' },
-  { icon: 'lucide:accessibility', number: '02', title: 'Accesibilidad desde el inicio', text: 'Semántica, contraste, teclado y movimiento responsable integrados en el proceso, no añadidos al final.' },
-  { icon: 'lucide:waypoints', number: '03', title: 'Contexto full-stack', text: 'Entiendo la ruta completa de los datos y tomo mejores decisiones de interfaz porque conozco lo que sucede detrás.' },
+  { icon: 'lucide:layout-template', number: '01', title: 'Visión de conjunto', text: 'Me interesa comprender el problema completo y cómo se relacionan la interfaz, la lógica y los datos.' },
+  { icon: 'lucide:accessibility', number: '02', title: 'Cuidado por las personas', text: 'Busco que cada solución sea clara, accesible y fácil de utilizar, además de funcionar correctamente.' },
+  { icon: 'lucide:waypoints', number: '03', title: 'Curiosidad y método', text: 'Aprendo nuevas herramientas con constancia, documento lo que descubro y trabajo de forma ordenada.' },
 ]
 
 const journey = [
   { label: 'Sensibilidad visual', title: 'Diseño y comunicación', text: 'El arte, los idiomas y el diseño me enseñaron a observar, ordenar y comunicar con precisión.' },
   { label: 'Base técnica', title: 'Desarrollo multiplataforma', text: 'La formación DAM convirtió esa mirada en aplicaciones, arquitectura y resolución sistemática de problemas.' },
   { label: 'Experiencia real', title: 'Producto de extremo a extremo', text: 'En prácticas construí una aplicación de control horario ocupándome de interfaz, lógica, datos y seguridad.' },
-  { label: 'Foco actual', title: 'Experiencias web accesibles', text: 'Hoy pongo esa perspectiva completa al servicio del frontend: útil, expresivo y preparado para crecer.' },
+  { label: 'Siguiente etapa', title: 'Seguir creciendo como desarrolladora', text: 'Ahora quiero consolidar mi experiencia en un equipo, aportar en proyectos reales y descubrir dónde puedo generar más valor.' },
 ]
 ---
 
-<DefaultLayout title="Julia Shevchenko · Frontend Developer">
+<DefaultLayout title="Julia Shevchenko · Desarrolladora de software junior">
   <Hero
     alt="Paisaje digital que simboliza el recorrido entre ideas, código y producto"
-    subtitle="Me gusta convertir ideas en productos digitales que se entienden, funcionan bien y están pensados para personas reales."
+    subtitle="Me formé en Desarrollo de Aplicaciones Multiplataforma y he trabajado con Java, PHP, MySQL, JavaScript y Firebase. Me gusta entender cómo funciona un producto completo, desde la interfaz hasta los datos y la lógica que hay detrás."
   >
-    Creo experiencias web <em>claras, cuidadas y fáciles de usar</em>
+    Conecto ideas, código y experiencia de usuario para crear <em>soluciones útiles</em>
   </Hero>
 
   <section id="trayectoria" class="section section--intro" aria-labelledby="intro-title" data-section="trayectoria">
     <div class="container intro-grid">
       <div data-reveal="left">
-        <p class="section-kicker">Mi manera de construir</p>
-        <h2 id="intro-title">Entre la claridad visual y la lógica del sistema.</h2>
+        <p class="section-kicker">Cómo trabajo</p>
+        <h2 id="intro-title">Entender el problema antes de elegir la tecnología.</h2>
       </div>
       <div class="intro-copy" data-reveal style="--reveal-delay: 100ms">
-        <p>Me interesa el punto exacto donde una idea compleja se vuelve sencilla de usar. Ahí combino pensamiento visual, desarrollo frontend y una base full-stack para crear productos que funcionan con coherencia.</p>
-        <p>No diseño pantallas aisladas: construyo recorridos, estados y detalles que ayudan a las personas a orientarse y avanzar.</p>
+        <p>Disfruto analizando cómo encajan las distintas partes de una aplicación. Mi formación y mis proyectos me han permitido trabajar con interfaces, lógica de negocio, bases de datos y autenticación.</p>
+        <p>No me define una sola tecnología. Me importa comprender lo que necesita el proyecto, construir una solución clara y seguir aprendiendo durante el proceso.</p>
       </div>
     </div>
   </section>
@@ -92,8 +92,8 @@ const journey = [
     <div class="container journey-grid">
       <div class="journey-heading" data-reveal="left">
         <p class="section-kicker">El recorrido importa</p>
-        <h2 id="journey-title">No llegué al frontend por una línea recta.</h2>
-        <p>Cada etapa añadió una capa: cómo comunicar, cómo diseñar, cómo construir y cómo conectar las piezas.</p>
+        <h2 id="journey-title">Mi camino hacia el desarrollo no fue lineal.</h2>
+        <p>Cada etapa me enseñó algo útil: comunicar con claridad, cuidar los detalles, organizar información y resolver problemas.</p>
         <a class="text-link" href="/about-me">Leer mi historia <Icon aria-hidden="true" name="lucide:arrow-right" size="1rem" /></a>
       </div>
       <ol class="journey-list">
@@ -130,7 +130,7 @@ const journey = [
     <div class="container contact-band__inner" data-reveal>
       <p class="section-kicker">El siguiente capítulo</p>
       <h2 id="contact-title">¿Construimos algo que merezca ser usado?</h2>
-      <p>Estoy abierta a oportunidades frontend donde la calidad visual, la accesibilidad y la buena ingeniería formen parte de la misma conversación.</p>
+      <p>Estoy abierta a oportunidades junior en desarrollo de software donde pueda aportar, aprender de un equipo y seguir creciendo con proyectos reales.</p>
       <a href="/contact/">Hablemos <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1.25rem" /></a>
     </div>
   </section>
