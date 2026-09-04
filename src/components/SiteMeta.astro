@@ -16,7 +16,7 @@ interface Props {
   /**
    * The URL of the page
    */
-  url: string
+  url: string | URL
   /**
    * The image path for social sharing
    */
@@ -29,7 +29,9 @@ interface Props {
 
 const { title, description, url, image, author = 'Julia Shevchenko' } = Astro.props
 
-let subtitle = 'jshevvik - Desarrolladora Android y web'
+const subtitle = 'Julia Shevchenko — Frontend Developer'
+const canonicalUrl = new URL(url, Astro.site)
+const socialImage = new URL(image, Astro.site)
 ---
 
 <!-- general meta -->
@@ -41,10 +43,16 @@ let subtitle = 'jshevvik - Desarrolladora Android y web'
 <meta property="og:title" content={`${title} - ${subtitle}`} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
-<meta property="og:image" content={`${Astro.site}${image}`} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={socialImage} />
 
 <!-- twitter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={`${title} - ${subtitle}`} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+
+<link rel="canonical" href={canonicalUrl} />
 
 <!-- page title -->
 <title>{title} - {subtitle}</title>

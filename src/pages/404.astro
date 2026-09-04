@@ -4,19 +4,24 @@ import { Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
-<DefaultLayout title="404">
-  <section class="my-12">
+<DefaultLayout title="Página no encontrada" description="La página solicitada no existe en el portfolio de Julia Shevchenko.">
+  <section class="not-found">
     <div class="container">
-      <Heading level="h1">404</Heading>
-    </div>
-  </section>
-  <section class="my-12">
-    <div class="space-content container">
-      <p class="text-2xl">This page does not exist. Don't worry though, we got you.</p>
+      <p class="not-found__code">404</p>
+      <Heading level="h1">Esta ruta no forma parte del recorrido.</Heading>
+      <p>Puede que la página se haya movido o que el enlace ya no esté disponible.</p>
       <Link href="/" isButton type="primary" animateOnHover animationType="nudge">
-        Let's get you home, Astronaut
-        <Icon aria-hidden="true" name="lucide:rocket" size="1.5rem" />
+        Volver al inicio
+        <Icon aria-hidden="true" name="lucide:arrow-left" size="1.25rem" />
       </Link>
     </div>
   </section>
 </DefaultLayout>
+
+<style>
+  .not-found { display: grid; min-height: 75svh; place-items: center; padding-block: 8rem 5rem; }
+  .not-found .container { max-width: 52rem; text-align: center; }
+  .not-found__code { color: #ff9688; font-size: 1rem; font-weight: 700; letter-spacing: .18em; }
+  .not-found :global(h1) { margin: 1rem auto; color: #eff8fa; font-size: clamp(2.8rem, 7vw, 6rem); line-height: 1; }
+  .not-found > .container > p:not(.not-found__code) { margin: 0 auto 2rem; max-width: 38rem; color: #9fb4bf; }
+</style>

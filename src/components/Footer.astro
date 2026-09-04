@@ -1,35 +1,38 @@
 ---
-
 import Logo from './Logo.astro'
-import { Heading, Link } from 'accessible-astro-components'
-
-/**
- * Footer Component
- *
- * @description A component that displays the footer of the website
- */
+import { Icon } from 'astro-icon/components'
 const currentYear = new Date().getFullYear()
 ---
 
 <footer>
-  
-  <section class="py-8">
-    <div class="container flex flex-col gap-4 md:flex-row md:justify-between">
-      <p>
-        &copy; {currentYear} - Starter Theme for <Link href="https://astro.build/">Astro</Link>.
-      </p>
-    
-        <div class="flex flex-col gap-4">
-        <Logo loading="lazy" />
-        
-      </div>
-      
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <Logo loading="lazy" />
+      <p>Frontend Developer with a Full-stack background.</p>
     </div>
-  </section>
+    <nav aria-label="Enlaces del pie">
+      <a href="/portfolio/">Proyectos</a>
+      <a href="/about-me">Sobre mí</a>
+      <a href="/blog/">Notas</a>
+      <a href="/accessibility-statement/">Accesibilidad</a>
+    </nav>
+    <div class="footer__social">
+      <a href="https://github.com/jshevvik" rel="me noreferrer" target="_blank">
+        <Icon aria-hidden="true" name="lucide:github" size="1.2rem" /><span class="sr-only">GitHub de Julia, abre en una pestaña nueva</span>
+      </a>
+      <p>© {currentYear} Julia Shevchenko</p>
+    </div>
+  </div>
 </footer>
 
 <style>
-  section {
-    border-top: 1px solid var(--border-color-subtle);
-  }
+  footer { border-top: 1px solid rgb(130 181 198 / .17); padding-block: 3rem; background: #030e19; }
+  .footer__inner { display: grid; gap: 2rem; }
+  .footer__brand p { margin-top: .75rem; max-width: 22rem; color: #7f9aa8; font-size: .9rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
+  nav a { color: #a9bec8; font-size: .9rem; text-decoration: none; }
+  .footer__social { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .footer__social > a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1px solid rgb(121 183 199 / .25); border-radius: 50%; color: #73e7d8; }
+  .footer__social p { color: #6f8998; font-size: .82rem; }
+  @media (min-width: 48rem) { .footer__inner { grid-template-columns: 1fr auto; align-items: end; } .footer__social { grid-column: 1 / -1; border-top: 1px solid rgb(130 181 198 / .12); padding-top: 1.5rem; } }
 </style>

@@ -1,92 +1,224 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
-import Feature from '@components/Feature.astro'
-import FeaturedProjects from '@components/FeaturedProjects.astro'
-import FeaturedPosts from '@components/FeaturedPosts.astro'
-// eslint-disable-next-line no-unused-vars
-import { Accordion, AccordionItem, Heading } from 'accessible-astro-components'
-import ContentMedia from '@components/ContentMedia.astro'
+import { Icon } from 'astro-icon/components'
 
+const strengths = [
+  { icon: 'lucide:layout-template', number: '01', title: 'Frontend con intención', text: 'Interfaces claras, responsive y con una identidad visual que acompaña el contenido sin imponerse sobre él.' },
+  { icon: 'lucide:accessibility', number: '02', title: 'Accesibilidad desde el inicio', text: 'Semántica, contraste, teclado y movimiento responsable integrados en el proceso, no añadidos al final.' },
+  { icon: 'lucide:waypoints', number: '03', title: 'Contexto full-stack', text: 'Entiendo la ruta completa de los datos y tomo mejores decisiones de interfaz porque conozco lo que sucede detrás.' },
+]
+
+const journey = [
+  { label: 'Sensibilidad visual', title: 'Diseño y comunicación', text: 'El arte, los idiomas y el diseño me enseñaron a observar, ordenar y comunicar con precisión.' },
+  { label: 'Base técnica', title: 'Desarrollo multiplataforma', text: 'La formación DAM convirtió esa mirada en aplicaciones, arquitectura y resolución sistemática de problemas.' },
+  { label: 'Experiencia real', title: 'Producto de extremo a extremo', text: 'En prácticas construí una aplicación de control horario ocupándome de interfaz, lógica, datos y seguridad.' },
+  { label: 'Foco actual', title: 'Experiencias web accesibles', text: 'Hoy pongo esa perspectiva completa al servicio del frontend: útil, expresivo y preparado para crecer.' },
+]
 ---
 
-<DefaultLayout title="Inicio · Julia | Android & Web">
-  <!-- HERO (sin correo: no paso secondaryHref / secondaryText) -->
-  <Hero 
-    src="/here-img.webp"
-    alt="Retrato de Julia, desarrolladora Android y Web"
-    title="Hola, soy Julia"
-    subtitle="Desarrolladora que disfruta el desafío de convertir lógica compleja en aplicaciones simples de usar."
-    primaryHref="/portfolio"
-    primaryText="Ver proyectos"
-  />
+<DefaultLayout title="Julia Shevchenko · Frontend Developer">
+  <Hero
+    alt="Paisaje digital que simboliza el recorrido entre ideas, código y producto"
+    subtitle="Creo interfaces accesibles y expresivas, respaldadas por una comprensión real de todo el producto: desde la experiencia visual hasta la lógica que la sostiene."
+  >
+    Frontend Developer <em>with a Full-stack background</em>
+  </Hero>
 
-  <!-- TECNOLOGÍAS Y HERRAMIENTAS -->
-  <section class="my-64">
-  <div class="container">
-    <Heading level="h2" class="mb-8">Tecnologías y herramientas</Heading>
-    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-
-      <Feature icon="lucide:code-xml" title="Lenguajes">
-        Java · PHP · Python · C# · Dart · HTML · CSS/SCSS · SQL
-      </Feature>
-
-      <Feature icon="lucide:boxes" title="Frameworks / Librerías">
-        JavaFX · Spring Boot · Hibernate · Flutter
-      </Feature>
-
-      <Feature icon="lucide:database" title="Bases de datos">
-        OracleDB · SQLite · Firebase
-      </Feature>
-
-      <Feature icon="lucide:smartphone" title="Android">
-        Android Studio (Java) · Material · consumo de APIs · persistencia local
-      </Feature>
-
-      <Feature icon="lucide:globe-2" title="Web">
-        HTML · CSS/SCSS · JavaScript · GitHub Pages (CI con Actions)
-      </Feature>
-
-      <Feature icon="lucide:wrench" title="Herramientas y control de versiones">
-        Git · GitHub · Docker · Composer · Maven · IntelliJ IDEA
-      </Feature>
-
+  <section id="trayectoria" class="section section--intro" aria-labelledby="intro-title" data-section="trayectoria">
+    <div class="container intro-grid">
+      <div data-reveal="left">
+        <p class="section-kicker">Mi manera de construir</p>
+        <h2 id="intro-title">Entre la claridad visual y la lógica del sistema.</h2>
+      </div>
+      <div class="intro-copy" data-reveal style="--reveal-delay: 100ms">
+        <p>Me interesa el punto exacto donde una idea compleja se vuelve sencilla de usar. Ahí combino pensamiento visual, desarrollo frontend y una base full-stack para crear productos que funcionan con coherencia.</p>
+        <p>No diseño pantallas aisladas: construyo recorridos, estados y detalles que ayudan a las personas a orientarse y avanzar.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="section section--strengths" aria-labelledby="strengths-title">
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <p class="section-kicker">Lo que aporto</p>
+        <h2 id="strengths-title">Una mirada completa, aplicada al detalle.</h2>
+      </div>
+      <ol class="strength-grid">
+        {strengths.map((item, index) => (
+          <li class="strength-card" data-reveal="scale" style={`--reveal-delay: ${index * 90}ms`}>
+            <div class="strength-card__top">
+              <Icon aria-hidden="true" name={item.icon} size="1.65rem" />
+              <span>{item.number}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
+  <section id="proyecto" class="section project" aria-labelledby="project-title" data-section="proyecto">
+    <div class="container">
+      <div class="section-heading section-heading--split" data-reveal>
+        <div>
+          <p class="section-kicker">Proyecto destacado</p>
+          <h2 id="project-title">Control Horario</h2>
+        </div>
+        <p>Una plataforma web completa para convertir procesos laborales complejos en una experiencia clara para empleados, supervisores y administración.</p>
+      </div>
 
-  <!-- BLOQUES EXPLICATIVOS -->
+      <a class="project-card" href="/portfolio/controlhorario/" aria-label="Ver el caso de estudio de Control Horario" data-reveal="scale">
+        <div class="project-card__image">
+          <img src="/projects/dashboard.png" alt="Panel principal de la aplicación Control Horario" width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-card__body">
+          <div>
+            <p class="project-card__meta">Full-stack · UX · Accesibilidad</p>
+            <h3>Del fichaje geolocalizado a los informes: un sistema pensado como producto.</h3>
+          </div>
+          <span class="project-card__arrow"><Icon aria-hidden="true" name="lucide:arrow-up-right" size="1.5rem" /></span>
+        </div>
+      </a>
 
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-  <Heading level="h2">Sobre mí</Heading>
-  <p class="text-2xl">
-    Desarrolladora Android y Web. Creo aplicaciones donde la lógica y el diseño se complementan para resolver problemas reales.
+      <div class="project-facts" aria-label="Tecnologías principales del proyecto" data-reveal style="--reveal-delay: 120ms">
+        <span>PHP 8.2</span><span>MySQL</span><span>JavaScript</span><span>Docker</span><span>Leaflet</span>
+      </div>
+    </div>
+  </section>
 
-    Formación: Técnica Superior en Desarrollo de Aplicaciones Multiplataforma. Experiencia en proyectos móviles (Java, Android Studio) y web (full-stack).
+  <section class="section journey" aria-labelledby="journey-title">
+    <div class="container journey-grid">
+      <div class="journey-heading" data-reveal="left">
+        <p class="section-kicker">El recorrido importa</p>
+        <h2 id="journey-title">No llegué al frontend por una línea recta.</h2>
+        <p>Cada etapa añadió una capa: cómo comunicar, cómo diseñar, cómo construir y cómo conectar las piezas.</p>
+        <a class="text-link" href="/about-me">Leer mi historia <Icon aria-hidden="true" name="lucide:arrow-right" size="1rem" /></a>
+      </div>
+      <ol class="journey-list">
+        {journey.map((item, index) => (
+          <li data-reveal style={`--reveal-delay: ${index * 75}ms`}>
+            <span class="journey-list__number">0{index + 1}</span>
+            <div>
+              <p>{item.label}</p>
+              <h3>{item.title}</h3>
+              <span>{item.text}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
-    Me impulsa la curiosidad por entender cómo funcionan las cosas y la satisfacción de construir software útil.
-  </p>
-</ContentMedia>
+  <section id="notas" class="section notes" aria-labelledby="notes-title" data-section="notas">
+    <div class="container">
+      <div class="section-heading section-heading--split" data-reveal>
+        <div><p class="section-kicker">Notas de aprendizaje</p><h2 id="notes-title">Lo que descubro, lo documento.</h2></div>
+        <a class="text-link" href="/blog/">Ver todos los artículos <Icon aria-hidden="true" name="lucide:arrow-right" size="1rem" /></a>
+      </div>
+      <div class="notes-grid notes-grid--single">
+        <a class="note-card note-card--featured" href="/blog/mi-primer-post/" data-reveal="scale">
+          <img src="/posts/mi-primera-entrada/cover.png" alt="" width="1200" height="630" loading="lazy" decoding="async" />
+          <div><p>Proceso · Accesibilidad</p><h3>De LinkedIn a mi propia casa en la web</h3><span>Leer artículo <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1rem" /></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  
-
-  <!-- PROYECTOS / BLOG -->
-  <FeaturedProjects />
-  <FeaturedPosts />
-
-  <!-- FAQ -->
-  
-
-  <!-- MÉTRICAS (ajústalas cuando quieras) -->
- 
+  <section id="contacto" class="contact-band" aria-labelledby="contact-title" data-section="contacto">
+    <div class="container contact-band__inner" data-reveal>
+      <p class="section-kicker">El siguiente capítulo</p>
+      <h2 id="contact-title">¿Construimos algo que merezca ser usado?</h2>
+      <p>Estoy abierta a oportunidades frontend donde la calidad visual, la accesibilidad y la buena ingeniería formen parte de la misma conversación.</p>
+      <a href="/contact/">Hablemos <Icon aria-hidden="true" name="lucide:arrow-up-right" size="1.25rem" /></a>
+    </div>
+  </section>
 </DefaultLayout>
 
-<style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
+<style lang="scss">
+  .section { padding-block: clamp(5rem, 10vw, 10rem); }
+  .section-kicker { margin-bottom: 1rem; color: #73e7d8; font-weight: 600; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; }
+  .section h2 { max-width: 16ch; color: #f2f8fb; font-size: clamp(2.5rem, 5.3vw, 5.4rem); line-height: 1; letter-spacing: -.045em; }
+  .section-heading { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+  .section-heading--split { display: grid; align-items: end; gap: 1.5rem; }
+  .section-heading--split > p { max-width: 38rem; color: #a9bdc8; font-size: 1.1rem; }
+  .intro-grid { display: grid; gap: 2rem; }
+  .intro-copy { display: grid; gap: 1.25rem; max-width: 42rem; color: #b9cad4; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.6; }
+
+  .section--strengths { border-block: 1px solid rgb(133 184 201 / .14); background: #071b2d; }
+  .strength-grid { display: grid; gap: 1rem; }
+  .strength-card { position: relative; overflow: hidden; min-height: 22rem; border: 1px solid rgb(125 181 198 / .18); border-radius: 1rem; padding: clamp(1.5rem, 3vw, 2.25rem); background: linear-gradient(145deg, rgb(13 45 67 / .82), rgb(5 23 39 / .7)); transition: transform 320ms cubic-bezier(.2,.8,.2,1), border-color 240ms ease, box-shadow 320ms ease; }
+  .strength-card::after { position: absolute; right: -30%; bottom: -50%; width: 14rem; aspect-ratio: 1; border-radius: 50%; transform: scale(.5); opacity: 0; background: radial-gradient(circle, rgb(112 230 215 / .15), transparent 68%); content: ''; transition: opacity 350ms ease, transform 500ms cubic-bezier(.2,.8,.2,1); }
+  .strength-card:hover { transform: translateY(-7px); border-color: rgb(112 230 215 / .55); box-shadow: 0 1.5rem 3rem rgb(0 7 15 / .22); }
+  .strength-card:hover::after { opacity: 1; transform: scale(1); }
+  .strength-card svg { transition: transform 320ms cubic-bezier(.2,.8,.2,1); }
+  .strength-card:hover svg { transform: rotate(-8deg) scale(1.12); }
+  .strength-card__top { display: flex; justify-content: space-between; color: #72e6d7; }
+  .strength-card__top span { color: #627e8e; font-size: .85rem; }
+  .strength-card h3 { margin-top: clamp(4rem, 7vw, 7rem); color: #edf8fa; font-size: 1.55rem; }
+  .strength-card p { margin-top: 1rem; color: #9fb5c1; font-size: 1rem; line-height: 1.6; }
+
+  .project-card { display: block; overflow: hidden; border: 1px solid rgb(123 181 198 / .2); border-radius: 1.25rem; background: #0a2034; color: inherit; text-decoration: none; transition: transform 380ms cubic-bezier(.2,.8,.2,1), border-color 280ms ease, box-shadow 380ms ease; }
+  .project-card:hover, .project-card:focus-visible { transform: translateY(-.5rem); border-color: rgb(112 230 215 / .5); box-shadow: 0 2.25rem 5rem rgb(0 5 12 / .32); }
+  .project-card__image { overflow: hidden; aspect-ratio: 16 / 8.2; background: #0d2a42; }
+  .project-card__image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 500ms cubic-bezier(.1,.1,0,1); }
+  .project-card:hover .project-card__image img { transform: scale(1.025); }
+  .project-card__body { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(1.5rem, 3.5vw, 3rem); }
+  .project-card__meta { margin-bottom: .8rem; color: #ff9688; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+  .project-card h3 { max-width: 30ch; color: #eef8fa; font-size: clamp(1.35rem, 3vw, 2.5rem); line-height: 1.15; }
+  .project-card__arrow { display: grid; flex: 0 0 auto; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: #70e6d7; color: #05201f; transition: transform 320ms cubic-bezier(.2,.8,.2,1), background-color 220ms ease; }
+  .project-card:hover .project-card__arrow, .project-card:focus-visible .project-card__arrow { transform: rotate(10deg) scale(1.08); background: #9af5eb; }
+  .project-facts { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+  .project-facts span { border: 1px solid rgb(130 180 197 / .2); border-radius: 999px; padding: .45rem .85rem; color: #8fa8b5; font-size: .85rem; }
+
+  .journey { background: radial-gradient(circle at 15% 40%, rgb(255 128 111 / .08), transparent 24rem), #04111e; }
+  .journey-grid { display: grid; gap: clamp(3rem, 8vw, 8rem); }
+  .journey-heading { align-self: start; }
+  .journey-heading > p:not(.section-kicker) { margin-top: 1.5rem; max-width: 34rem; color: #9db3bf; }
+  .text-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.75rem; color: #74e7d8; font-weight: 600; text-decoration-color: rgb(116 231 216 / .4); text-underline-offset: .35rem; }
+  .journey-list { border-top: 1px solid rgb(130 183 199 / .18); }
+  .journey-list li { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; border-bottom: 1px solid rgb(130 183 199 / .18); padding-block: 1.8rem; }
+  .journey-list__number { color: #ff8e7f; font-size: .8rem; }
+  .journey-list p { color: #6f919f; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+  .journey-list h3 { margin-block: .3rem .65rem; color: #eaf5f8; font-size: 1.35rem; }
+  .journey-list div > span { color: #96acb7; font-size: .98rem; }
+
+  .notes-grid { display: grid; gap: 1rem; }
+  .note-card { display: grid; overflow: hidden; border: 1px solid rgb(125 181 198 / .18); border-radius: 1rem; background: #0a2034; color: inherit; text-decoration: none; transition: transform 340ms cubic-bezier(.2,.8,.2,1), border-color 240ms ease, box-shadow 340ms ease; }
+  .note-card:hover, .note-card:focus-visible { transform: translateY(-.4rem); border-color: rgb(255 128 111 / .5); box-shadow: 0 1.75rem 4rem rgb(0 5 12 / .26); }
+  .note-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; transition: transform 600ms cubic-bezier(.2,.8,.2,1), filter 400ms ease; }
+  .note-card:hover img, .note-card:focus-visible img { transform: scale(1.035); filter: saturate(1.08); }
+  .note-card div { display: flex; flex-direction: column; padding: 1.5rem; }
+  .note-card p { color: #ff9688; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+  .note-card h3 { margin-block: .8rem 2rem; color: #eff8fa; font-size: clamp(1.25rem, 2.5vw, 1.8rem); line-height: 1.2; }
+  .note-card span { display: inline-flex; align-items: center; gap: .4rem; margin-top: auto; color: #79e8da; font-size: .9rem; }
+  .note-card span svg { transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+  .note-card:hover span svg, .note-card:focus-visible span svg { transform: translate(.15rem, -.15rem); }
+
+  .contact-band { padding-block: clamp(6rem, 11vw, 11rem); background: radial-gradient(circle at 80% 20%, rgb(255 128 111 / .18), transparent 22rem), #0b2b42; text-align: center; }
+  .contact-band__inner { display: flex; flex-direction: column; align-items: center; }
+  .contact-band h2 { max-width: 13ch; color: #f1fbfc; font-size: clamp(3rem, 7vw, 6.8rem); line-height: .96; letter-spacing: -.055em; }
+  .contact-band > .container > p:not(.section-kicker) { margin-top: 1.6rem; max-width: 43rem; color: #b9ccd5; }
+  .contact-band a { position: relative; display: inline-flex; align-items: center; overflow: hidden; gap: .5rem; margin-top: 2rem; border-radius: 999px; padding: .9rem 1.4rem; background: #77e9db; color: #062522; font-weight: 700; text-decoration: none; transition: transform 260ms cubic-bezier(.2,.8,.2,1), background-color 220ms ease, box-shadow 260ms ease; }
+  .contact-band a svg { transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+  .contact-band a:hover, .contact-band a:focus-visible { transform: translateY(-3px); background: #9af5eb; box-shadow: 0 1.25rem 2.75rem rgb(0 10 18 / .22); }
+  .contact-band a:hover svg, .contact-band a:focus-visible svg { transform: translate(.18rem, -.18rem); }
+
+  @media (min-width: 48rem) {
+    .intro-grid { grid-template-columns: 1fr .85fr; align-items: start; }
+    .strength-grid { grid-template-columns: repeat(3, 1fr); }
+    .section-heading--split { grid-template-columns: 1fr .7fr; }
+    .journey-grid { grid-template-columns: .8fr 1fr; }
+    .journey-heading { position: sticky; top: 8rem; }
+    .notes-grid { grid-template-columns: 1.25fr .75fr; }
+    .notes-grid--single { grid-template-columns: minmax(0, 1fr); max-width: 56rem; }
+    .note-card:not(.note-card--featured) { grid-template-rows: .75fr 1fr; }
+  }
+
+  @media (max-width: 35rem) { .project-card__body { align-items: flex-start; flex-direction: column; } .project-card__arrow { width: 3rem; height: 3rem; } }
+  @media (prefers-reduced-motion: reduce) {
+    .strength-card, .strength-card::after, .strength-card svg, .project-card, .project-card__image img, .project-card__arrow, .note-card, .note-card img, .note-card span svg, .contact-band a, .contact-band a svg { transition: none; }
+    .strength-card:hover, .strength-card:hover svg, .project-card:hover, .project-card:hover .project-card__image img, .project-card:hover .project-card__arrow, .note-card:hover, .note-card:hover img, .note-card:hover span svg, .contact-band a:hover, .contact-band a:hover svg { transform: none; }
   }
 </style>

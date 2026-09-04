@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, passthroughImageService } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import compress from 'astro-compress'
 import icon from 'astro-icon'
@@ -11,7 +11,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   compressHTML: true,
   site: 'https://jshevvik.github.io',
-  integrations: [mdx(), icon(), compress(), sitemap()],
+  image: { service: passthroughImageService() },
+  integrations: [mdx(), icon({ iconDir: 'src/icons' }), compress(), sitemap()],
   vite: {
     css: {
       preprocessorOptions: {

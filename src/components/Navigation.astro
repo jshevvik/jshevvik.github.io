@@ -1,429 +1,67 @@
 ---
 import ResponsiveToggle from './ResponsiveToggle.astro'
 import Logo from './Logo.astro'
-
-/**
- * Navigation Component
- *
- * @description A component that displays the navigation menu for the website
- */
 ---
 
-<div id="main-navigation" class="py-8">
-  <div class="container">
+<div id="main-navigation">
+  <div class="container navigation__inner">
     <Logo />
-    <div class="wrapper">
-      <nav class="desktop-menu" aria-label="Main navigation desktop">
-        <ul class="menu">
-          <slot />
-        </ul>
-      </nav>
-      <ResponsiveToggle />
-    </div>
-    <nav class="mobile-menu" aria-label="Main navigation mobile">
-      <ul class="menu">
-        <slot />
-      </ul>
+    <nav class="desktop-menu" aria-label="Navegación principal">
+      <ul class="menu"><slot /></ul>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+    <ResponsiveToggle />
+    <nav id="mobile-navigation" class="mobile-menu" aria-label="Navegación móvil">
+      <ul class="menu"><slot /></ul>
     </nav>
   </div>
 </div>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    // variables
-    const mainNav = document.querySelector('#main-navigation') as HTMLElement | null
-    if (!mainNav) return
-
-    const mainMenu = mainNav.querySelector('ul') as HTMLUListElement | null
-    const dropdownMenus = [...document.querySelectorAll('.has-dropdown button')] as HTMLButtonElement[]
-
-    // functions
-    const setActiveMenuItem = (): void => {
-      const mobileDesktopMenus = mainNav.querySelectorAll('nav > ul')
-      const currentPathname = window.location.pathname
-
-      mobileDesktopMenus.forEach((menu) => {
-        const menuItems = [...menu.querySelectorAll('a:not([rel*="external"])')] as HTMLAnchorElement[]
-
-        menuItems.forEach((menuItem) => {
-          if (currentPathname.includes(menuItem.pathname.replaceAll('/', '')) && menuItem.textContent !== 'Home') {
-            menuItem.classList.add('is-active')
-            menuItem.setAttribute('aria-current', 'page')
-          } else if (menuItem.textContent === 'Home' && currentPathname === '/') {
-            menuItem.classList.add('is-active')
-            menuItem.setAttribute('aria-current', 'page')
-          }
-        })
-      })
-    }
-
-    const isOutOfViewport = (element: Element): boolean => {
-      const elementBounds = element.getBoundingClientRect()
-      return elementBounds.right > (window.innerWidth || document.documentElement.clientWidth)
-    }
-
-    const openDropdownMenu = (dropdownMenu: HTMLButtonElement): void => {
-      const dropdownList = dropdownMenu.parentNode?.querySelector('ul') as HTMLUListElement | null
-      if (!dropdownList) return
-
-      dropdownMenu.classList.add('show')
-      dropdownMenu.setAttribute('aria-expanded', 'true')
-
-      if (isOutOfViewport(dropdownList)) {
-        dropdownList.style.left = 'auto'
-      }
-    }
-
-    const closeDropdownMenu = (dropdownMenu: HTMLButtonElement): void => {
-      dropdownMenu.classList.remove('show')
-      dropdownMenu.setAttribute('aria-expanded', 'false')
-    }
-
-    const closeAllDropdownMenus = (): void => {
-      for (let i = 0; i < dropdownMenus.length; i++) {
-        closeDropdownMenu(dropdownMenus[i])
-      }
-    }
-
-    const toggleDropdownMenu = (event: MouseEvent): void => {
-      const target = event.target as HTMLButtonElement
-      if (target.getAttribute('aria-expanded') === 'false') {
-        closeAllDropdownMenus()
-        openDropdownMenu(target)
-      } else {
-        closeDropdownMenu(target)
-      }
-    }
-
-    // execution
-    mainMenu &&
-      mainMenu.addEventListener('keydown', (event: KeyboardEvent) => {
-        const element = event.target as Element
-        const currentMenuItem = element.closest('li')
-        const menuItems = [...mainMenu.querySelectorAll('.menu-item')] as HTMLLIElement[]
-        const currentDropdownMenu = element.closest('.has-dropdown button') as HTMLButtonElement | null
-        const currentDropdownMenuItem = element.closest('.has-dropdown li') as HTMLLIElement | null
-        const currentIndex = currentMenuItem ? menuItems.findIndex((item) => item === currentMenuItem) : -1
-
-        const key = event.key
-        let targetItem: Element | null = null
-
-        if (key === 'ArrowRight') {
-          if (currentMenuItem && menuItems.indexOf(currentMenuItem as HTMLLIElement) === menuItems.length - 1) {
-            targetItem = menuItems[0]
-          } else if (currentMenuItem) {
-            targetItem = menuItems[currentIndex + 1]
-          }
-        }
-
-        if (key === 'ArrowLeft') {
-          if (currentMenuItem && menuItems.indexOf(currentMenuItem as HTMLLIElement) === 0) {
-            targetItem = menuItems[menuItems.length - 1]
-          } else if (currentMenuItem) {
-            targetItem = menuItems[currentIndex - 1]
-          }
-        }
-
-        if (key === 'Escape') {
-          targetItem = menuItems[0]
-        }
-
-        if (currentDropdownMenu) {
-          const nextElement = currentDropdownMenu.nextElementSibling as Element | null
-          if (nextElement) {
-            const firstDropdownItem = nextElement.querySelector('li')
-
-            if (key === 'ArrowDown') {
-              event.preventDefault()
-              openDropdownMenu(currentDropdownMenu)
-              targetItem = firstDropdownItem
-            }
-          }
-
-          if (key === 'Escape') {
-            closeDropdownMenu(currentDropdownMenu)
-          }
-        }
-
-        if (currentDropdownMenuItem) {
-          const currentDropdownList = currentDropdownMenuItem.parentNode as Element | null
-          if (currentDropdownList) {
-            const dropdownMenuItems = [...currentDropdownList.querySelectorAll('li')] as HTMLLIElement[]
-            const currentIndex = dropdownMenuItems.findIndex((item) => item === currentDropdownMenuItem)
-
-            if (key === 'ArrowDown') {
-              event.preventDefault()
-
-              if (dropdownMenuItems.indexOf(currentDropdownMenuItem) === dropdownMenuItems.length - 1) {
-                targetItem = dropdownMenuItems[0]
-              } else {
-                targetItem = dropdownMenuItems[currentIndex + 1]
-              }
-            }
-
-            if (key === 'ArrowUp') {
-              event.preventDefault()
-
-              if (dropdownMenuItems.indexOf(currentDropdownMenuItem) === 0) {
-                targetItem = dropdownMenuItems[dropdownMenuItems.length - 1]
-              } else {
-                targetItem = dropdownMenuItems[currentIndex - 1]
-              }
-            }
-
-            if (key === 'Escape') {
-              const currentDropdownMenu = currentDropdownList.previousElementSibling as HTMLButtonElement | null
-              if (currentDropdownMenu) {
-                targetItem = currentDropdownMenu.parentElement
-                closeAllDropdownMenus()
-              }
-            }
-
-            if (key === 'Tab') {
-              const currentDropdownMenu = currentDropdownList.previousElementSibling as HTMLButtonElement | null
-              if (currentDropdownMenu) {
-                if (dropdownMenuItems.indexOf(currentDropdownMenuItem) === dropdownMenuItems.length - 1) {
-                  closeDropdownMenu(currentDropdownMenu)
-                }
-              }
-            }
-          }
-        }
-
-        if (targetItem) {
-          const focusableElement = targetItem.querySelector('a, button, input') as HTMLElement | null
-          if (focusableElement) {
-            focusableElement.focus()
-          }
-        }
-      })
-
-    dropdownMenus &&
-      dropdownMenus.forEach((dropdownMenu) => {
-        dropdownMenu.addEventListener('click', toggleDropdownMenu as EventListener)
-      })
-
-    setActiveMenuItem()
-    window.addEventListener('click', (event: MouseEvent) => {
-      const element = event.target as Element
-      if (!element.hasAttribute('aria-haspopup') && !element.classList.contains('submenu-item')) {
-        closeAllDropdownMenus()
-      }
-    })
-  })
-</script>
-
 <style lang="scss" is:global>
-  @use '../assets/scss/base/mixins' as *;
-  @use '../assets/scss/base/breakpoint' as *;
-
   #main-navigation {
-    > .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .navigation__inner { position: relative; display: flex; align-items: center; justify-content: space-between; min-height: 5.5rem; transition: min-height 350ms cubic-bezier(.2,.75,.2,1); }
+    .navigation__inner > a { position: relative; z-index: 2; color: #eff9fb; text-decoration: none; }
+    .navigation__inner > a img { width: 2.25rem; height: auto; transition: transform 300ms cubic-bezier(.2,.8,.2,1); }
+    .navigation__inner > a:hover img, .navigation__inner > a:focus-visible img { transform: rotate(-5deg) scale(1.06); }
+    .navigation__inner > a span { font-size: 1rem; letter-spacing: .01em; }
+    .desktop-menu { position: relative; padding-block: .5rem; }
+    .menu { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2rem); }
+    .menu a { display: inline-flex; align-items: center; gap: .35rem; color: #b6c9d2; font-size: .95rem; text-decoration: none; transition: color 200ms ease; }
+    .menu a:hover, .menu a:focus-visible, .menu a.is-active { color: #f0fafb; }
+    .nav-indicator { position: absolute; bottom: 0; left: 0; width: var(--indicator-width, 0); height: 2px; border-radius: 999px; opacity: 0; transform: translateX(var(--indicator-x, 0)); background: linear-gradient(90deg, #70e6d7, #9af5eb); box-shadow: 0 0 .75rem rgb(112 230 215 / .55); transition: width 320ms cubic-bezier(.2,.8,.2,1), transform 320ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease; }
+    .nav-indicator.is-ready { opacity: 1; }
+    .nav-indicator.is-immediate { transition: none; }
+    .menu-item--contact a { position: relative; overflow: hidden; border: 1px solid rgb(113 231 216 / .45); border-radius: 999px; padding: .6rem 1rem; color: #77e9db; isolation: isolate; transition: color 220ms ease, border-color 220ms ease, transform 220ms cubic-bezier(.2,.8,.2,1); }
+    .menu-item--contact a::before { position: absolute; z-index: -1; inset: 0; transform: translateY(105%); background: #77e9db; content: ''; transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+    .menu-item--contact a svg { transition: transform 260ms cubic-bezier(.2,.8,.2,1); }
+    .menu-item--contact a:hover, .menu-item--contact a:focus-visible { border-color: #77e9db; color: #05221f; transform: translateY(-1px); }
+    .menu-item--contact a:hover::before, .menu-item--contact a:focus-visible::before { transform: translateY(0); }
+    .menu-item--contact a:hover svg, .menu-item--contact a:focus-visible svg { transform: translate(.18rem, -.18rem); }
 
-    // Mobile-first: show mobile menu by default
-    .mobile-menu {
-      display: none;
+    .mobile-menu { position: absolute; top: calc(100% - .25rem); right: 0; left: 0; overflow: hidden; max-height: 0; border: 1px solid transparent; border-radius: 0 0 1rem 1rem; padding-inline: var(--grid-gutter); visibility: hidden; opacity: 0; transform: translateY(-.75rem); background: rgb(4 17 30 / .96); box-shadow: 0 1.5rem 3rem rgb(0 5 12 / .3); pointer-events: none; transition: max-height 450ms cubic-bezier(.2,.75,.2,1), opacity 250ms ease, transform 350ms cubic-bezier(.2,.75,.2,1), visibility 0s linear 450ms, padding 350ms ease, border-color 350ms ease; backdrop-filter: blur(18px); }
+    .mobile-menu.show { max-height: min(31rem, calc(100vh - 6rem)); border-color: rgb(137 187 203 / .17); padding-block: 1.2rem 1.5rem; visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto; transition-delay: 0s; }
+    .mobile-menu .menu { align-items: stretch; flex-direction: column; gap: .2rem; }
+    .mobile-menu .menu-item { opacity: 0; transform: translateY(-.6rem); transition: opacity 280ms ease, transform 350ms cubic-bezier(.2,.75,.2,1); }
+    .mobile-menu.show .menu-item { opacity: 1; transform: translateY(0); transition-delay: calc(70ms + var(--menu-index, 0) * 55ms); }
+    .mobile-menu .menu-item:nth-child(1) { --menu-index: 0; }
+    .mobile-menu .menu-item:nth-child(2) { --menu-index: 1; }
+    .mobile-menu .menu-item:nth-child(3) { --menu-index: 2; }
+    .mobile-menu .menu-item:nth-child(4) { --menu-index: 3; }
+    .mobile-menu .menu-item:nth-child(5) { --menu-index: 4; }
+    .mobile-menu .menu a { display: flex; min-height: 3rem; padding: .65rem .25rem; font-size: 1.08rem; }
+    .mobile-menu .menu-item--contact a { justify-content: center; margin-top: .55rem; width: 100%; }
+    .responsive-toggle { display: none; }
+  }
 
-      &.show {
-        display: block;
-      }
-    }
+  .site-header.is-scrolled #main-navigation .navigation__inner { min-height: 4.5rem; }
 
-    .responsive-toggle {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xs);
-    }
+  @media (max-width: 47.99rem) {
+    #main-navigation .navigation__inner { flex-wrap: wrap; min-height: 4.75rem; }
+    #main-navigation .desktop-menu { display: none; }
+    #main-navigation .responsive-toggle { display: flex; }
+  }
 
-    .desktop-menu {
-      display: none;
-    }
-
-    // Desktop: switch to desktop menu at nav breakpoint
-    @include breakpoint('nav') {
-      .mobile-menu {
-        display: none;
-      }
-
-      .responsive-toggle {
-        display: none;
-      }
-
-      .desktop-menu {
-        display: block;
-      }
-    }
-
-    .wrapper {
-      display: flex;
-      align-items: center;
-      gap: var(--space-m);
-    }
-
-    a,
-    button {
-      color: var(--foreground-color);
-    }
-
-    nav {
-      > ul {
-        display: flex;
-        gap: var(--space-m);
-        list-style-type: none;
-
-        li {
-          align-content: center;
-        }
-
-        a:hover,
-        a:focus-visible,
-        .is-active,
-        button[aria-expanded='true'],
-        .has-dropdown > button:hover,
-        .has-dropdown > button:focus-visible {
-          text-decoration: underline;
-          text-decoration-style: wavy;
-          text-decoration-thickness: 1px;
-          text-underline-offset: 7px;
-        }
-
-        .is-active {
-          font-weight: bold;
-        }
-
-        .highlight a {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2xs);
-          transition: all var(--animation-speed-fast) var(--cubic-bezier);
-          margin-block-start: calc(var(--space-4xs) * -1);
-          border: 1px solid var(--foreground-color);
-          border-radius: var(--radius-large);
-          padding: var(--space-4xs) var(--space-2xs);
-          text-decoration: none;
-
-          &:where(:hover, :focus-visible) {
-            background-color: var(--foreground-color);
-            color: var(--background-color) !important;
-          }
-        }
-      }
-    }
-
-    .mobile-menu {
-      flex-basis: 100%;
-      margin-block-start: var(--space-m);
-      border: 1px solid var(--border-color-subtle);
-      border-radius: var(--radius-l);
-      padding: var(--space-m);
-
-      > ul {
-        flex-direction: column;
-        align-items: flex-start;
-
-        ul {
-          position: relative;
-          margin-block-start: var(--space-m);
-        }
-      }
-
-      a,
-      button {
-        display: block;
-        padding: var(--space-2xs) 0;
-        inline-size: 100%;
-      }
-    }
-
-    .has-dropdown {
-      position: relative;
-
-      > button {
-        display: flex;
-        align-items: center;
-        gap: var(--space-4xs);
-        margin-block-start: -1px;
-
-        svg {
-          transition: all var(--animation-speed-instant) var(--cubic-bezier);
-        }
-
-        &.show {
-          svg {
-            scale: -1;
-          }
-        }
-      }
-
-      ul {
-        display: none;
-        position: absolute;
-        flex-direction: column;
-        gap: var(--space-2xs);
-        translate: 0 1rem;
-        opacity: 0;
-        z-index: 100;
-        inset-block-start: 125%;
-        inset-inline-end: 0;
-        inset-inline-start: 0;
-        box-shadow: var(--elevation-4);
-        border: 2px solid var(--border-color-subtle);
-        border-radius: var(--radius-l);
-        background-color: var(--background-color);
-        padding: var(--space-m);
-        min-inline-size: 275px;
-
-        @media (prefers-reduced-motion: no-preference) {
-          transition-behavior: allow-discrete;
-          transition-duration: var(--animation-speed-fast);
-          transition-property: display, opacity, translate;
-          transition-timing-function: var(--cubic-bezier);
-        }
-      }
-
-      > button.show ~ ul {
-        display: flex;
-        translate: 0;
-        opacity: 1;
-
-        @starting-style {
-          translate: 0 1rem;
-          opacity: 0;
-        }
-      }
-    }
-
-    .darkmode-toggle {
-      border: none;
-      padding: 0;
-
-      @include breakpoint('nav') {
-        // Align with the menu items
-        margin-block-start: 7px;
-      }
-
-      .icon {
-        inline-size: 30px;
-        block-size: 30px;
-      }
-
-      &:where(:hover, :focus-visible) {
-        box-shadow: none;
-      }
-
-      &:focus {
-        @include outline;
-
-        &:not(:focus-visible) {
-          outline: none;
-          box-shadow: none;
-        }
-      }
-    }
+  @media (prefers-reduced-motion: reduce) {
+    #main-navigation .navigation__inner, #main-navigation .navigation__inner > a img, #main-navigation .nav-indicator, #main-navigation .menu-item--contact a, #main-navigation .menu-item--contact a::before, #main-navigation .menu-item--contact a svg, #main-navigation .mobile-menu, #main-navigation .mobile-menu .menu-item { transition: none; }
   }
 </style>

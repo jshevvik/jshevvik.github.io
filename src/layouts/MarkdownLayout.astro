@@ -1,13 +1,23 @@
 ---
 import DefaultLayout from './DefaultLayout.astro'
+import PageHeader from '../components/PageHeader.astro'
 
 const { frontmatter } = Astro.props
 ---
 
 <DefaultLayout title={frontmatter.title}>
+  <PageHeader title={frontmatter.title} bgType="bordered" />
   <div class="container">
-    <div class="space-content my-12">
+    <div class="prose space-content my-12">
       <slot />
     </div>
   </div>
 </DefaultLayout>
+
+<style>
+  .prose { margin-block: clamp(4rem, 8vw, 7rem); max-width: 52rem; color: #b8c9d2; font-size: 1.08rem; line-height: 1.75; }
+  .prose :global(h2), .prose :global(h3) { color: #eff8fa; }
+  .prose :global(h2) { margin-top: 0; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.08; }
+  .prose :global(h3) { margin-top: 3rem; font-size: 1.65rem; }
+  .prose :global(hr) { margin-block: 3rem; border: 0; border-top: 1px solid rgb(130 181 198 / .2); }
+</style>
