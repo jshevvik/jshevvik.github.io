@@ -12,7 +12,7 @@ export default defineConfig({
   compressHTML: true,
   site: 'https://jshevvik.github.io',
   image: { service: passthroughImageService() },
-  integrations: [mdx(), icon({ iconDir: 'src/icons' }), compress(), sitemap()],
+  integrations: [mdx(), icon({ iconDir: 'src/icons' }), compress({ Exclude: [(file) => file.replaceAll('\\', '/').endsWith('/hero-layers/hero-v2-layer-04-foreground.png')] }), sitemap()],
   vite: {
     css: {
       preprocessorOptions: {

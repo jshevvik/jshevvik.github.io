@@ -13,12 +13,12 @@ interface Props {
 
 const {
   alt = 'Paisaje nocturno que conecta naturaleza, ciudad, código y un camino iluminado',
-  title = 'Frontend Developer with a Full-stack background',
-  subtitle = 'Diseño y desarrollo experiencias web accesibles, sólidas y cuidadas de principio a fin.',
+  title = 'Creo experiencias web claras, cuidadas y fáciles de usar',
+  subtitle = 'Me gusta convertir ideas en productos digitales que se entienden, funcionan bien y están pensados para personas reales.',
   primaryHref = '/portfolio/',
-  primaryText = 'Explorar proyectos',
+  primaryText = 'Ver proyectos',
   secondaryHref = '/about-me',
-  secondaryText = 'Conocer mi recorrido',
+  secondaryText = 'Sobre mí',
 }: Props = Astro.props
 ---
 
@@ -38,7 +38,7 @@ const {
 
     <div class="container hero__grid">
       <div class="hero__content">
-        <p class="hero__eyebrow" data-hero-step style="--hero-delay: 220ms"><span></span> Hola, soy Julia</p>
+        <p class="hero__eyebrow" data-hero-step style="--hero-delay: 220ms"><span></span> Frontend developer · Perfil full-stack</p>
         <h1 id="hero-title" data-hero-step style="--hero-delay: 320ms"><slot>{title}</slot></h1>
         <p class="hero__subtitle" data-hero-step style="--hero-delay: 450ms">{subtitle}</p>
 
@@ -56,14 +56,14 @@ const {
         </div>
 
         <ul class="hero__signals" aria-label="Especialidades" data-hero-step style="--hero-delay: 710ms">
-          <li>Interfaces accesibles</li>
-          <li>Astro &amp; JavaScript</li>
-          <li>Visión full-stack</li>
+          <li>Diseño frontend</li>
+          <li>Accesibilidad</li>
+          <li>De la interfaz a los datos</li>
         </ul>
       </div>
     </div>
 
-    <div class="hero__layer hero__layer--foreground" data-depth="60" data-base-scale="1.07" data-scroll-y="-125" data-scroll-scale="0.032">
+    <div class="hero__layer hero__layer--foreground" data-depth="60" data-depth-x="24" data-depth-y="8" data-base-scale="1.07" data-scroll-y="-18" data-scroll-scale="0.006">
       <img src="/hero-layers/hero-v2-layer-04-foreground.png" alt="" width="1672" height="941" loading="eager" decoding="async" />
     </div>
 
@@ -76,7 +76,7 @@ const {
 
 <style lang="scss">
   .hero { position: relative; isolation: isolate; height: 145svh; background: #04111e; }
-  .hero__sticky { position: sticky; top: 0; isolation: isolate; display: grid; align-items: center; overflow: hidden; height: 100svh; min-height: 42rem; padding-block: clamp(7rem, 11vw, 9rem) clamp(5rem, 9vw, 8rem); }
+  .hero__sticky { position: sticky; top: 0; isolation: isolate; display: grid; align-items: center; overflow: hidden; height: 100svh; min-height: 42rem; padding-block: clamp(6.5rem, 9vh, 8rem) clamp(3rem, 6vh, 5rem); }
   .hero__sticky::before { position: absolute; z-index: 4; inset: 0; opacity: .07; background-image: linear-gradient(rgb(109 231 216 / .18) 1px, transparent 1px), linear-gradient(90deg, rgb(109 231 216 / .18) 1px, transparent 1px); background-size: 5rem 5rem; mask-image: linear-gradient(to bottom, black, transparent 72%); content: ''; animation: grid-drift 32s linear infinite; pointer-events: none; }
 
   .hero__layer { position: absolute; inset: -4%; opacity: 1; transform: translate3d(var(--layer-x, 0px), calc(var(--layer-y, 0px) + var(--layer-scroll-y, 0px)), 0) scale(var(--layer-scale, 1.04)); transform-origin: center; will-change: transform; pointer-events: none; }
@@ -93,7 +93,7 @@ const {
   .hero__content::before { position: absolute; z-index: -1; inset: -2.5rem -4rem -3rem -3rem; border-radius: 50%; background: radial-gradient(ellipse at 38% 47%, rgb(3 14 25 / .77) 0%, rgb(3 14 25 / .52) 42%, rgb(3 14 25 / .2) 67%, transparent 78%); filter: blur(8px); content: ''; pointer-events: none; }
   .hero__eyebrow { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; color: #8df1e5; font-weight: 600; font-size: .95rem; letter-spacing: .12em; text-shadow: 0 2px 1rem rgb(0 4 10 / .7); text-transform: uppercase; }
   .hero__eyebrow span { width: 2.5rem; height: 1px; background: currentColor; box-shadow: 0 0 .75rem currentColor; }
-  h1 { max-width: 12ch; color: #f5fbff; font-weight: 600; font-size: clamp(3.35rem, 6.5vw, 6.8rem); line-height: .94; letter-spacing: -.055em; text-shadow: 0 .2rem 1.6rem rgb(0 5 13 / .6); text-wrap: balance; }
+  h1 { max-width: 12ch; color: #f5fbff; font-weight: 600; font-size: clamp(3.1rem, 5.6vw, 5.9rem); line-height: .94; letter-spacing: -.055em; text-shadow: 0 .2rem 1.6rem rgb(0 5 13 / .6); text-wrap: balance; }
   h1 :global(em), h1 :global(strong) { color: #74e7d8; font-style: normal; }
   .hero__subtitle { margin-top: clamp(1.5rem, 3vw, 2.25rem); max-width: 37rem; color: #d0dde4; font-size: clamp(1.1rem, 1.35vw, 1.28rem); line-height: 1.55; text-shadow: 0 2px 1rem rgb(0 4 10 / .8); }
 
@@ -127,6 +127,7 @@ const {
   @keyframes atmosphere-drift { from { transform: translateX(-5%) scale(.97); } to { transform: translateX(-2%) scale(1.04); } }
   @keyframes scroll-cue { 0%, 100% { opacity: .45; transform: translateY(-.15rem); } 50% { opacity: 1; transform: translateY(.3rem); } }
 
+  @media (max-height: 52rem) and (min-width: 48rem) { .hero__sticky { padding-block: 6.25rem 2.5rem; } h1 { font-size: clamp(3rem, 5vw, 4.75rem); } .hero__eyebrow { margin-bottom: 1rem; } .hero__subtitle { margin-top: 1.2rem; } .hero__actions { margin-top: 1.4rem; } .hero__signals { margin-top: 1.5rem; } }
   @media (min-width: 56rem) { .hero__scroll { display: flex; } }
   @media (max-width: 55.99rem) { .hero { height: 135svh; } .hero__sticky { min-height: 0; padding-top: 7rem; } .hero__layer { inset: -3%; } .hero__layer img { object-position: 66% center; } .hero__content { max-width: 46rem; } .hero__content::before { inset: -2rem -2rem -2.5rem -2rem; background: radial-gradient(ellipse at 42% 48%, rgb(3 14 25 / .8), rgb(3 14 25 / .48) 47%, transparent 76%); } h1 { max-width: 13ch; font-size: clamp(3.15rem, 12vw, 5rem); } }
   @media (max-width: 34rem) { .hero__sticky { align-items: start; padding-top: 6.5rem; } .hero__layer { inset: -2%; } .hero__layer img { object-position: 69% center; } .hero__content::before { inset: -1.5rem -.8rem -2rem -1rem; } .hero__actions { align-items: stretch; flex-direction: column; } .hero__button { width: 100%; } .hero__signals { display: grid; margin-top: 2.5rem; } }
